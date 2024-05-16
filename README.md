@@ -11,3 +11,4 @@ Topics that will be covered in this course include:
 * Common biases and how to recognise them
 * Data visualisation as a tool to explore data, investigate trends, and convey important messages
 * Summarising data and quantifying differences or trends
+* Interpreting inferential statistics
