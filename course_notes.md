@@ -81,8 +81,7 @@ statistics is to make inferences about a target population of interest
 based on a random sample.
 
 <figure>
-<img
-src="C:/Users/sophi/OneDrive/Documents/Teaching/LSR%20training%20courses/MoJ%20statistical%20thinking/Images/statistical%20inference%20pic.png"
+<img src="Images/statistical%20inference%20pic.png"
 alt="Figure 1.1: The statistical inference proces" />
 <figcaption aria-hidden="true">Figure 1.1: The statistical inference
 proces</figcaption>
