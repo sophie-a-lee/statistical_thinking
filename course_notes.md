@@ -49,6 +49,26 @@ Sophie Lee
     variables](#42-summarising-numeric-variables)
     - [4.2.1 Measures of centre](#421-measures-of-centre)
     - [4.2.2 Measures of spread](#422-measures-of-spread)
+- [Chapter 5: Making comparisons](#chapter-5-making-comparisons)
+  - [5.1 Comparing a categorical variable between
+    groups](#51-comparing-a-categorical-variable-between-groups)
+  - [5.2 Comparing numeric variable between two
+    groups](#52-comparing-numeric-variable-between-two-groups)
+  - [5.3 Comparing variables over
+    time](#53-comparing-variables-over-time)
+  - [5.4 Identifying trends between two numeric
+    variables](#54-identifying-trends-between-two-numeric-variables)
+- [Chapter 6: Inferential statistics](#chapter-6-inferential-statistics)
+  - [6.1 What are inferential
+    statistics?](#61-what-are-inferential-statistics)
+  - [6.2 Measures of precision](#62-measures-of-precision)
+  - [6.3 Central limit theorem](#63-central-limit-theorem)
+  - [6.4 Confidence intervals](#64-confidence-intervals)
+  - [6.5 Confidence interval example](#65-confidence-interval-example)
+  - [6.6 p-values](#66-p-values)
+  - [6.7 p-value example](#67-p-value-example)
+  - [6.8 The relationship between p-values and confidence
+    intervals](#68-the-relationship-between-p-values-and-confidence-intervals)
 
 # Chapter 1: Introduction to Statistical thinking
 
@@ -315,7 +335,7 @@ death for those who saw Harold Shipman. The difference is so stark that
 it can be argued that no formal statistical analysis would be required
 to confirm this.
 
-![](Statistical_thinking_rmd_files/figure-gfm/Figure%203.1%20Harold%20Shipman%20example-1.png)<!-- -->
+![](course_notes_files/figure-gfm/Figure%203.1%20Harold%20Shipman%20example-1.png)<!-- -->
 
 Often, trends and differences in data will not be so obvious, but it is
 important to understand which data visualisations can be useful in
@@ -331,7 +351,7 @@ variable(s) we wish to display, the number of variables and the message
 we are trying to disseminate. Common plots used to display combinations
 of different types of data are given in following table:
 
-![](Statistical_thinking_rmd_files/figure-gfm/Table%203.1%20Visualisation%20table-1.png)<!-- -->
+![](course_notes_files/figure-gfm/Table%203.1%20Visualisation%20table-1.png)<!-- -->
 
 ## 3.2 Visualising a single, numeric variable
 
@@ -350,12 +370,12 @@ the histogram, also known as the average or mean. The histogram will
 then have two symmetric tails that show more ‘extreme’ values become
 less common as they are further from the average:
 
-![](Statistical_thinking_rmd_files/figure-gfm/Figure%203.3%20normal%20distribution-1.png)<!-- -->
+![](course_notes_files/figure-gfm/Figure%203.3%20normal%20distribution-1.png)<!-- -->
 
 The histogram below shows the settlement funding assessment (SFA) for
 each local authority in England in 2015 given in millions of pounds:
 
-![](Statistical_thinking_rmd_files/figure-gfm/Figure%203.4%20Histogram%20SFA-1.png)<!-- -->
+![](course_notes_files/figure-gfm/Figure%203.4%20Histogram%20SFA-1.png)<!-- -->
 
 The first thing we can see from this histogram is that it is clearly not
 a normal distribution. The peak of the sample distribution is close to
@@ -382,14 +402,14 @@ analysis is carried out on this data.
 The updated histogram, without the Greater London Authority duplicate,
 is given below. Notice that the x axis limits have changed:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.5%20histogram%20no%20London-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.5%20histogram%20no%20London-1.png)<!-- -->
 
 When the objective of a histogram is to check the distribution of a
 numerical variable, a density curve can be added to the histogram which
 aims to smooth the bars into a continuous curve. These curves are
 usually easier to compare to a distribution of interest:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.6%20histogram%20with%20denisty-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.6%20histogram%20with%20denisty-1.png)<!-- -->
 
 The density line is far from symmetric, indicating a **skewed
 distribution**. A skewed (non-normal) continuous variable is not a sign
@@ -411,14 +431,14 @@ packages). When we reduce the number of bars to 15, the curve becomes
 smoother but the dip in distribution at around £50 million is no longer
 visible:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.7%20hitogram%2015%20bars-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.7%20hitogram%2015%20bars-1.png)<!-- -->
 
 If the number of bars is increased to 100, we can see there are many
 small peaks in the data that we were not able to see with wider bars,
 however the overall distribution of the data becomes more difficult to
 interpret:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.8%20hitogram%20100%20bars-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.8%20hitogram%20100%20bars-1.png)<!-- -->
 
 When creating histograms, it is important to try different numbers of
 bars to ensure that important trends are not missed. When interpreting
@@ -450,7 +470,7 @@ choice.
     ## Warning in geom_bar(aes(x = region_fct, y = sfa_2015), stat = "summary", :
     ## Ignoring unknown parameters: `fun.y`
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.9%20bar%20chart%20SFA%20means-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.9%20bar%20chart%20SFA%20means-1.png)<!-- -->
 
 This bar chart shows that local authorities in London had the highest
 SFA on average, while the East Midlands and South East had the lowest.
@@ -475,7 +495,7 @@ outlier differs across software, however a common definition used for
 the boxplot below is any observation that lies further than 1.5 times
 the IQR from the box.
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.10%20boxplot%20SFA%20regions-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.10%20boxplot%20SFA%20regions-1.png)<!-- -->
 
 This boxplot shows far more information than the bar chart of averages.
 We can clearly see the outlier which was identified earlier as
@@ -502,7 +522,7 @@ previously but rotated 90 degrees. Violin plots show the full sample and
 are particularly useful where a distribution does not have a single peak
 (which is assumed by box plots).
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.11%20violin%20plots%20SFA%20per%20region-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.11%20violin%20plots%20SFA%20per%20region-1.png)<!-- -->
 
 One benefit of this violin plot compared to the boxplot is that we can
 see the very bottom-heavy distribution of SFA in the East Midlands, East
@@ -522,7 +542,7 @@ observation in the sample as points, separated into groups, in a **dot
 plot**. Dot plots have the same axes layout as the previous plots, with
 grouping on the x axis and the numeric variable on the y-axis.
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.12%20dot%20plot%20SFA%20per%20region-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.12%20dot%20plot%20SFA%20per%20region-1.png)<!-- -->
 
 Without checking, this dot plot appears to show every local authority’s
 SFA grouped by region. However, there are many local authorities that
@@ -531,7 +551,7 @@ lying on top of one another. To overcome this, a dot plot can be adapted
 by spreading the points out along the x-axis, also known as
 **jittering**:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.13%20dot%20plot%20SFA%20per%20region%20with%20jittering-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.13%20dot%20plot%20SFA%20per%20region%20with%20jittering-1.png)<!-- -->
 
 By jittering the points, we can now see the differences in the
 distribution of points in each region. The outlier of Birmingham is
@@ -551,7 +571,7 @@ information about the overall distribution and density of the sample.
 One solution would be to provide a boxplot with points added as an extra
 layer to the plot:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.14%20dot%20plot%20with%20boxplot%20of%20SFA%20per%20region-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.14%20dot%20plot%20with%20boxplot%20of%20SFA%20per%20region-1.png)<!-- -->
 
 This final plot clearly shows the differences in the average SFA between
 regions, the outlier in the West Midlands region (Birmingham), and the
@@ -573,7 +593,7 @@ Both counts and proportions/percentages can be displayed using
 **frequency tables**. For example, the number of recorded crimes in the
 East Midlands in 2023, categorised by police force:
 
-![](Statistical_thinking_rmd_files/figure-gfm/table%203.2%20recorded%20crimes%20EM-1.png)<!-- -->
+![](course_notes_files/figure-gfm/table%203.2%20recorded%20crimes%20EM-1.png)<!-- -->
 
 Frequency tables can provide a lot of information and, where there are
 not many categories, can be easy to interpret. However, they can quickly
@@ -586,7 +606,7 @@ The same data can be displayed using a **bar chart**, the categorical
 equivalent of a histogram, where the length of each bar represents the
 number of observations in the category:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.15%20bar%20plot%20em%20crime-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.15%20bar%20plot%20em%20crime-1.png)<!-- -->
 
 Although this bar chart is also not particularly interesting, our eyes
 are immediately drawn to the differences between groups. We can
@@ -600,21 +620,21 @@ example by ordering the bars from largest to smallest frequencies to
 highlight the differences in groups (note that this is only appropriate
 where there is no ordering to the groups):
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.16%20ordered%20bar%20chart%20em%20crime-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.16%20ordered%20bar%20chart%20em%20crime-1.png)<!-- -->
 
 Colours can also be used to emphasise groups that are of interest to the
 audience. For example, if this graph was displayed as part of an
 investigation into crime levels in Derbyshire, we could change the
 colour of this bar to draw attention to it:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.17%20bar%20chart%20Derbyshire%20coloured-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.17%20bar%20chart%20Derbyshire%20coloured-1.png)<!-- -->
 
 We can also swap the axes so that the bars run horizontally and the
 frequencies are shown on the x axis. This can sometimes make the
 ordering and length of the bars easier to read, or can make the graph
 more compact where the group labels are long:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.18%20horizontal%20bar%20em%20crime-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.18%20horizontal%20bar%20em%20crime-1.png)<!-- -->
 
 In general, bar charts have a frequency axis that begin at 0. Howeverm
 if all values are very high, this can make it difficult to distinguish
@@ -625,7 +645,7 @@ can make differences appear larger than they actually are.
 For example, using the recorded crime data, we could set the frequency
 axis to begin at 50,000 as all counts were higher than this:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.19%20bar%20plot%20x%20start%2050,000-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.19%20bar%20plot%20x%20start%2050,000-1.png)<!-- -->
 
 Although the plot shows the same information as the others, the smaller
 counts appear much smaller than the original plot and the difference
@@ -653,14 +673,14 @@ For example, taking the recorded crime statistics from 2023, we can show
 the proportion of the total reported crimes in the East Midlands
 separated by police force area:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.20%20pie%20chart%20em%20crime-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.20%20pie%20chart%20em%20crime-1.png)<!-- -->
 
 figure 3.20 shows the same data as the bar charts shown earlier.
 However, it is harder to compare the groups as the proportions are quite
 similar. One possible solution to this issue is to add labels with the
 values onto each slice:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.21%20pie%20chart%20with%20labels-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.21%20pie%20chart%20with%20labels-1.png)<!-- -->
 
 Pie charts are generally discouraged because they are more difficult to
 interpret than bar charts or frequency tables. Although they are easier
@@ -689,7 +709,7 @@ For example, using the data from the previous section, we can compare
 the overall number of recorded crimes, as well as the different types of
 crimes, between police forces in the East Midlands:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.22%20stacked%20bar%20chart%20em%20crime%20by%20type-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.22%20stacked%20bar%20chart%20em%20crime%20by%20type-1.png)<!-- -->
 
 This bar chart clearly shows that Nottinghamshire and Leicestershire had
 the highest recorded crimes, and Lincolnshire and Northamptonshire had
@@ -711,7 +731,7 @@ the group in a category. These are particularly useful when differences
 in group sizes are not important, but the relative distributions between
 groups are.
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.23%20proportion%20bar%20chart%20em%20crime%20type-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.23%20proportion%20bar%20chart%20em%20crime%20type-1.png)<!-- -->
 
 The proportion bar chart confirms that the distribution of different
 crime types is similar across police forces, regardless of the total
@@ -732,7 +752,7 @@ the 5 police forces). This would be almost impossible to show clearly on
 one axis, so for this example, we will compare the three most common
 types of crime between forces: violent, theft, and public order.
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.26%20side%20by%20side%20bar-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.26%20side%20by%20side%20bar-1.png)<!-- -->
 
 All three bar charts show the same information in different formats. The
 most appropriate choice of these would depend on the motivation behind
@@ -769,7 +789,7 @@ mortality rate has been given on the y-axis as this is the outcome of
 interest which we think may be dependent on poverty (the explanatory
 variable):
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.27%20scatterplot%201-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.27%20scatterplot%201-1.png)<!-- -->
 
 The scatterplot shows there are no unexpected outliers, and there
 appears to be a positive linear relationship between these variables.
@@ -785,7 +805,7 @@ a line that minimises the difference between each point and the line
 drawn. Alternative methods are available where a linear relationship is
 not appropriate.
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.28%20scatterplot%20with%20line%20of%20best%20fit-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.28%20scatterplot%20with%20line%20of%20best%20fit-1.png)<!-- -->
 
 Adding a line of best fit to the scatterplot shown earlier highlights
 the positive association between poverty rate and cancer mortality.
@@ -797,7 +817,7 @@ Scatterplots can be extended to show additional variables by changing
 the appearance of points. Categorical variables can be added using a
 difference colour or symbol for each group:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.29%20scatterplot%20with%20colours-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.29%20scatterplot%20with%20colours-1.png)<!-- -->
 
 In this example, unemployment level has been added to the plot using
 different colours, with the key given in the legend. On average, areas
@@ -811,7 +831,7 @@ If we believed that the relationship between the variables given on the
 x- and y-axes differed between groups, we could also provide a line of
 best fit per group rather than for the sample as a whole:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.30%20scatterplot%20with%20colours%20and%20lines-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.30%20scatterplot%20with%20colours%20and%20lines-1.png)<!-- -->
 
 The lines of best fit have approximately the same gradient, indicating
 that the relationship between poverty and cancer mortality is
@@ -823,7 +843,7 @@ Numeric variables can also be added to scatterplots by adjusting the
 colour or size of the points based on each observations’ value. For
 example, the average age of each county could be added:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.31%20scatterplot%20with%20age%20colours-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.31%20scatterplot%20with%20age%20colours-1.png)<!-- -->
 
 The relationship between age, poverty and cancer mortality is hard to
 decipher as most counties have similar average ages which is not obvious
@@ -846,7 +866,7 @@ connected over time using a line. Line graphs are useful to explore
 trends over time, for example whether values have been increasing or
 decreasing.
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.32%20line%20graph%20total%20crime-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.32%20line%20graph%20total%20crime-1.png)<!-- -->
 
 This line graph shows the number of violent crimes recorded in England
 between 2010 and 2020. From this simple graph, we can clearly see that
@@ -866,7 +886,7 @@ graph shows the number of magistrate court cases, by type, between 2012
 and 2023. Each case type has a different coloured line, and the
 interactions between lines are clear:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%203.33%20line%20graph%20magistrate%20case%20type-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%203.33%20line%20graph%20magistrate%20case%20type-1.png)<!-- -->
 
 This line graph is the perfect example of where a visualisation is more
 powerful than simply writing results in a table of texts. The drastic
@@ -913,7 +933,7 @@ For example, the number of recorded crimes in the East Midlands in 2023,
 shown in the previous section in a bar chart and pie chart, can be
 presented as percentages and proportions:
 
-![](Statistical_thinking_rmd_files/figure-gfm/table%204.1%20recorded%20crimes%20EM%20perc%20and%20propn-1.png)<!-- -->
+![](course_notes_files/figure-gfm/table%204.1%20recorded%20crimes%20EM%20perc%20and%20propn-1.png)<!-- -->
 
 Both the proportions and percentages give the same information
 (percentage is simply proportion multiplied by 100) but percentages are
@@ -944,7 +964,7 @@ The average of a numeric variable is another way of saying the centre of
 its distribution. Often, people will think of the **mean** when trying
 to calculate an average, however this may not always be the case.
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%204.1-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%204.1-1.png)<!-- -->
 
 When data are normally distributed, the mean is the central peak of the
 distribution. This is calculated by adding together all numbers in the
@@ -1023,7 +1043,7 @@ observation and the mean. The larger the SD, the wider and flatter the
 normal curve will be; the smaller the SD, the narrower and taller the
 curve will be:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%204.2/4.3%20normal%20distribution%20different%20sd-1.png)<!-- -->![](Statistical_thinking_rmd_files/figure-gfm/figure%204.2/4.3%20normal%20distribution%20different%20sd-2.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%204.2/4.3%20normal%20distribution%20different%20sd-1.png)<!-- -->![](course_notes_files/figure-gfm/figure%204.2/4.3%20normal%20distribution%20different%20sd-2.png)<!-- -->
 
 The standard deviation is only appropriate where a numeric variable has
 a normal distribution, otherwise this value is meaningless. If a sample
@@ -1035,7 +1055,7 @@ For example, it is known that approximately 68% of a sample will lie one
 standard deviation from the mean, approximately 95% within 2 standard
 deviations from the mean, and around 99.7% within 3 standard deviations:
 
-![](Statistical_thinking_rmd_files/figure-gfm/figure%204.4%20normal%20with%20sd%20ranges-1.png)<!-- -->
+![](course_notes_files/figure-gfm/figure%204.4%20normal%20with%20sd%20ranges-1.png)<!-- -->
 
 This knowledge can also be used to check the mean and standard deviation
 were appropriate summary statistics, even if we have no other
@@ -1053,3 +1073,353 @@ million and £198.97 million. The SFA for local authorities cannot be
 negative, therefore this range would contain a lot of impossible values.
 This shows that the mean and standard deviation are not appropriate
 summaries, and the sample is not normally distributed.
+
+# Chapter 5: Making comparisons
+
+Often, our research question will involve a comparison between groups,
+investigating trends over time, or investigating a relationship between
+two numeric variables. There are multiple approaches we can use to
+compare groups but the correct choice will depend on the outcome of
+interest and the type of relationship we are interested in. This section
+will describe the most common comparative statistics, their
+interpretations, and the reasons we may choose to use one approach over
+another.
+
+## 5.1 Comparing a categorical variable between groups
+
+When comparing a categorical variable between groups, we are often
+comparing the summary measures that were introduced in the previous
+section: proportions, percentages, and rates. These summaries are either
+compared using the absolute difference or the relative difference.
+
+To demonstrate the difference between these comparisons, let’s consider
+the number of recorded crimes in the East Midlands we saw earlier and
+compare them to the number recorded in the West Midlands. These crimes
+are categorised as either violent or non-violent. We wish to compare the
+distribution of these types of crimes between the regions, i.e. was the
+proportion of recorded crimes that were violent similar between regions.
+The table below shows the number and type of crime, along with the
+percentage of total crimes in each region that were classified as either
+violent or non-violent:
+
+![](course_notes_files/figure-gfm/table%205.1%20violent%20vs.%20nonviolent%20crime%20in%20midlands-1.png)<!-- -->
+
+The absolute difference is calculated by simply subtracting proportions
+or percentages between groups. In this example, the absolute difference
+in proportions of total crimes that were violent is (0.408 - 0.386)
+0.22, and the absolute difference in percentages is (40.8% - 38.6%)
+2.2%. The West Midlands had 2.2% higher percentage points of recorded
+violent crimes than the East Midlands. If we carried out the sums the
+other way round, we would get a negative number (-2.2%), indicating a
+reduction in the percentage points in East Midlands compared to the
+West. Absolute differences are interpreted relative to a null value of
+0, representing no difference.
+
+Alternatively, the relative difference is found by dividing one value by
+another. Unlike the absolute difference, this will be the same whether
+we use the proportion or percentage. The relative difference in the
+percentage of violent crimes between regions is (40.8% / 38.6%) 1.057.
+This means that the percentage of crimes recorded as violent was 1.057
+times higher in the West Midlands compared to the East Midlands. If we
+wanted to do this comparison the other way around (comparing the East to
+West Midlands), we would find a relative difference of (38.6% / 40.8%)
+0.946. Therefore, the percentage of recorded crimes in the East Midlands
+that were violent was 0.946 times the percentage in the West Midlands.
+When interpreting relative differences, we are comparing the result to a
+null value of 1, given when both values are equal. As 0.946 is below 1,
+this represents a reduction.
+
+## 5.2 Comparing numeric variable between two groups
+
+The most appropriate method to compare a numeric variable between groups
+will once again depend on the distribution of the variable. A comparison
+can either be made using the difference in means, where both groups have
+a normally distributed sample, or difference in medians, where one or
+both of the samples are skewed.
+
+Earlier in the course, we saw the settlement funding assessment (SFA)
+for each local authority in England in 2015. We may want to compare this
+between two regions, for example between the North West and the
+Yorkshire and Humber regions. Before choosing the most appropriate
+comparison, we must check the distribution of SFA in each region using a
+histogram:
+
+![](course_notes_files/figure-gfm/figure%205.1%20histogram%20sfa%20nw%20and%20yh%20regions-1.png)<!-- -->
+
+As with the full sample, both regions’ values are positively skewed
+(with a longer upper tail). This means that a comparison of means would
+be inappropriate and we must use the difference in medians. The median
+of the North West was £57.15 million, the median in Yorkshire and the
+Humber was £58.49 million. This makes the median difference £1.34
+million (or -£1.34 million depending on which difference we are
+finding). Therefore, the SFA was £1.34 million higher on average in the
+Yorkshire and Humber region than in the North West in 2015.
+
+## 5.3 Comparing variables over time
+
+When dealing with temporal data, it is important to quantify differences
+across time as well as visualising them using a line graph. Comparison
+across time is typically given as an absolute difference between time
+points, as a relative difference, or this is commonly converted into a
+percentage change.
+
+Recall the line graph given in an earlier section showing the reduction
+in the number of violent crimes recorded between 2010 and 2020:
+
+![](course_notes_files/figure-gfm/figure%205.2%20line%20graph%20total%20crimes-1.png)<!-- -->
+
+This difference can be quantified by comparing the number of violent
+crimes recorded in 2010 and 2020. The absolute difference is found by
+subtracting the number of violent crimes recorded in 2020, 1,239,000, by
+the number in 2010, 1,841,000. There were 602,000 less violent crimes
+reported in 2020 compared to 2010.
+
+The relative difference is found by dividing one count by the other. In
+this example, the relative difference ($1,841,000 \div 1,239,000$) is
+1.486. This means that there were 1.486 times more violent crimes
+reported in 2020 compared to 2010. The percentage change can be found by
+comparing the relative difference to the null value of 1 (no relative
+difference). When comparing 2010 to 2020, the relative difference was
+0.486 above 1, giving the proportion increase. This can be multiplied by
+100 to give a percentage increase of 48.6%. Therefore, there were 48.6%
+more violent crimes reported in 2010 compared to 2020.
+
+The relative difference can also be found by comparing 2020 to 2010 if
+we want to give the relative or percentage decrease in violent crime.
+The relative difference ($1,239,000 \div 1,841,000$) is 0.673, so there
+were 0.673 times the number of crimes reported in 2020 than 2010. This
+result is not intuitive, so converting the difference into a percentage
+decrease can make the value easier to interpret. As with an increase, we
+first find the difference between the relative difference and the null
+(1 - 0.673). This gives a proportion decrease of 0.327 or a percentage
+decrease of 32.7%. Therefore, there were 32.7% fewer violent crimes
+reported in 2020 compared to 2010.
+
+## 5.4 Identifying trends between two numeric variables
+
+Correlation coefficients are summary statistics that describe the
+strength and direction of a relationship between two numeric variables.
+There are different types of correlation coefficients that exist, the
+choice of which depends on the nature of the trend it is measuring: is
+it linear or nonlinear?
+
+The **Pearson’s correlation coefficient** measures the association
+between numeric variables if we assume it is linear. It essentially
+measures how close points lie to the line of best fit added to a
+scatterplot. The alternative to Pearson’s correlation is **Spearman’s
+correlation coefficient**, this measures the general trend upwards or
+downwards, whether or not this is linear. As with medians and IQRs,
+Spearman’s correlation coefficient uses less of the data than Pearson’s
+so we only use it where necessary.
+
+Correlation coefficients take a value between -1 and 1. A value of 0
+represents no association, values of +/- 1 represent perfect association
+(a straight or curved line depending on the choice of statistic).
+Generally, a correlation coefficient will lie between 0 and +/- 1 where
+the further the value gets from 0, the stronger the relationship is.
+
+A correlation coefficient is said to show a **positive association** if
+the value is above 0. This means as one variable increases, the other
+also tends to increase:
+
+![](course_notes_files/figure-gfm/figure%205.3%20correlation%201-1.png)<!-- -->
+
+![](course_notes_files/figure-gfm/figure%205.4%20correlation%20positive-1.png)<!-- -->
+
+A correlation shows **negative association** if the value is below 0.
+This means as one variable increases, the other tends to decrease:
+
+![](course_notes_files/figure-gfm/figure%205.5%20correlation%20-1-1.png)<!-- -->
+
+![](course_notes_files/figure-gfm/figure%205.6%20correlation%20negative-1.png)<!-- -->
+
+A correlation coefficient close to 0 represents little or **no
+association**. However, it could also be an indication that the
+relationship is nonlinear and the Pearson coefficient is inappropriate.
+In this case, the Spearman coefficient may be more appropriate:
+
+![](course_notes_files/figure-gfm/figure%205.7%20correlation%200-1.png)<!-- -->
+
+![](course_notes_files/figure-gfm/figure%205.8%20spearman%20correlation-1.png)<!-- -->
+
+# Chapter 6: Inferential statistics
+
+## 6.1 What are inferential statistics?
+
+At the beginning of the course, we saw that one of the main aims of
+statistics is to make inferences about a target population of interest
+based on results of analysis applied to a random sample. These
+inferences require inferential statistics, namely **p-values** and
+**confidence intervals**. These are estimated by combining results from
+the random, representative sample taken from the target population, and
+information about the sample size and precision of the sample estimate.
+
+## 6.2 Measures of precision
+
+Inferential statistics require a measure of how precise a sample
+estimate is. **Precision** is quantified using the standard error (SE),
+calculated using the sample size and sample variability. The formula
+used to calculate a standard error depends on the type of parameter we
+wish to obtain from the target. For example, the standard error of a
+single mean ($SE(\bar{x}$)) is found by dividing the sample standard
+deviation ($SD$) by the square root of the sample size ($n$):
+
+$SE(\bar{x}) = \frac{SD}{\sqrt{n}}$
+
+Regardless of the formula used or the parameter of interest, the larger
+a sample is, the more precise an estimate will be. Conversely, the more
+varied a sample is, the less precise an estimate is. A precise estimate
+is represented by a small standard error value. Standard errors are used
+to estimate inferential statistics (p-values and confidence intervals)
+based on the central limit theorem.
+
+## 6.3 Central limit theorem
+
+The central limit theorem states that parameter estimates (e.g. mean,
+difference between means) from repeated, independent random samples
+taken from a population will tend towards the normal distribution. This
+will be the case even where the target population does not follow a
+normal distribution. The centre/peak of the normal distribution will be
+the true population parameter, and the spread will be described by the
+standard error.
+
+For example, if we took many random samples from a target population and
+found the mean of each sample, these sample means would follow a normal
+distribution. The mean and middle of the normal distribution would be
+the target population mean, and the spread would be described by the
+standard error of the mean.
+
+![](course_notes_files/figure-gfm/figure%206.1%20normal%20with%20se%20ranges-1.png)<!-- -->
+
+As we know that repeated sample parameters tend to a normal
+distribution, we can exploit the properties of the normal distribution
+to understand more about the target population parameter.
+
+## 6.4 Confidence intervals
+
+A confidence interval is a range of values that the true population
+statistic is compatible with based on the sample estimate, precision,
+and some pre-defined level of confidence.
+
+The confidence interval is created assuming the central limit theorem.
+As the hypothetical repeated estimates are assumed to follow a normal
+distribution, we can use the sample estimate of the parameter and the
+standard error to obtain ranges within which we would expect a certain
+percentage of parameter estimates to lie.
+
+For example, if we were interested in the mean of a population ($\mu$),
+we could use the sample mean ($\bar{x}$) to estimate the population mean
+and capture a range in which 95% of the hypothetical repeated sample
+means would lie. The boundaries of this interval could be calculated
+using the formula: \[$\bar{x} \pm 1.96 \times SE(\bar{x})$\].
+
+![](course_notes_files/figure-gfm/figure%206.2%20normal%20distribution%20with%20confidence%20interval-1.png)<!-- -->
+
+This 95% range is known as the 95% confidence interval. We are 95%
+confident that the true target population mean lies within this
+interval.
+
+The confidence level can be adjusted depending on how confident we wish
+to be about the true population parameter. Adjusting the confidence
+level changes the number of standard errors we capture from the mean
+within our interval. For example, a 99% confidence interval contains all
+values within 2.58 standard errors from the sample estimate. The table
+below shows the number of standard errors from the sample estimate
+captured for different confidence levels:
+
+![](course_notes_files/figure-gfm/table%206.1%20confidence%20levels%20and%20ses-1.png)<!-- -->
+
+## 6.5 Confidence interval example
+
+We wish to make inferences about the mean gestational period (length of
+time from conception to the birth of a baby) in the UK. As we are not
+able to obtain all information from every birth in the UK, we instead
+collect a random sample of 130 pregnant women and measure their
+gestational period in days:
+
+![](course_notes_files/figure-gfm/figure%206.3%20gestational%20age%20histogram-1.png)<!-- -->
+
+This sample follows a normal distribution with mean gestational period
+266.55 days, and a standard deviation of 16.37. However, if we wish to
+make inferences about the whole of the UK, we will need to estimate
+inferential statistics, such as a confidence interval.
+
+First, we calculate the standard error of the mean: \$SE = SD = 16.37 =
+1.436.
+
+This can be combined with the sample mean, 266.55, and the confidence
+limit, 95%, to estimate the 95% confidence interval:
+
+\[$266.55 - 1.96 \times 1.436, 266.55 - 1.96 \times 1.436$\] $=$
+\[$263.74, 269.37$\]
+
+Therefore, we are 95% confident that the mean gestational period in the
+whole of the UK lies between 263.74 days and 269.37 days (if the sample
+is random and representative!).
+
+## 6.6 p-values
+
+Another commonly used inferential statistic is the p-value. A p-value is
+the probability of obtaining a sample estimate as extreme, or more
+extreme, than the current if some null hypothesis (H0) were true. The
+null hypothesis is usually ‘no difference’ or ‘no association’,
+depending on the value being tested.
+
+If we consider the normal distribution of repeated sample estimates, the
+p-value is estimated by assuming the null hypothesis is true (and is
+therefore the peak of the distribution) and measuring how far the sample
+value is from this relative to the spread of the distribution (the
+standard error).
+
+![](course_notes_files/figure-gfm/figure%206.4%20normal%20distribution%20with%20H0%20in%20centre-1.png)<!-- -->
+
+The closer the sample estimate is to the null hypothesis, the more
+likely it was to occur if the null hypothesis were true, and the higher
+the p-value. The further away from the null hypothesis, the less likely
+it would be to occur and the lower the p-value.
+
+Results are often referred to as **statistically significant** if a
+p-value falls below a certain threshold. This threshold is often set to
+0.05, or a 5% chance that an estimate as extreme as the one obtained
+would occur if the null hypothesis were true.
+
+Although arbitrary cut-offs may be useful in some situations, for
+example where a decision needs to be taken based on the results, this is
+not how probability behaves. In reality, there is very little difference
+between a p-value of 0.049 (4.9% chance) and 0.051 (a 5.1% chance).
+Therefore, it is not advised to report ‘accepting’ or ‘rejecting’ a null
+hypothesis, despite how commonplace this is in some literature.
+
+## 6.7 p-value example
+
+Earlier, we estimated a 95% confidence interval to make inferences about
+the mean gestational age in the UK using a sample with a mean of 266.55
+days. Now, we wish to test the null hypothesis that the mean gestational
+age is equal to the standard ‘due date’ of 40 weeks, or 280 days.
+
+We begin by assuming the null hypothesis is correct, and calculate how
+far the sample estimate lies in the hypothetical sample estimate
+distribution:
+
+![](course_notes_files/figure-gfm/figure%206.5%20histogram%20showing%20p%20value%20calculation-1.png)<!-- -->
+
+The sample estimate, 266.55 days, lies very far from the hypothesised
+280 days. This leads us to a very small p-value, less than 0.0001. Such
+a small p-value would most certainly be considered statistically
+significant, and provides strong evidence against the null hypothesis
+that this sample came from a population with a mean gestational age of
+280 days.
+
+Note that although the p-value is very small, the null hypothesis is
+still not considered impossible and is not rejected. This would require
+a p-value of 0 which is statistically impossible.
+
+## 6.8 The relationship between p-values and confidence intervals
+
+As p-values and confidence intervals are based on the same information
+and theories, the results are linked. For example, if a p-value is less
+than 0.05, the sample estimate is further than 1.96 standard errors from
+the null hypothesis, meaning the null hypothesis will not lie in the 95%
+confidence interval. Conversely, if a p-value is higher than 0.05, the
+sample estimate is closer to the null hypothesis and the 95% confidence
+interval will contain the null hypothesis.
