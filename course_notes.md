@@ -466,9 +466,6 @@ common choice of average for charts of this sort is the mean. We shall
 discuss in later sections why this may not be the most appropriate
 choice.
 
-    ## Warning in geom_bar(aes(x = region_fct, y = sfa_2015), stat = "summary", :
-    ## Ignoring unknown parameters: `fun.y`
-
 ![](course_notes_files/figure-gfm/figure%203.9%20bar%20chart%20SFA%20means-1.png)<!-- -->
 
 This bar chart shows that local authorities in London had the highest
@@ -674,7 +671,7 @@ separated by police force area:
 
 ![](course_notes_files/figure-gfm/figure%203.20%20pie%20chart%20em%20crime-1.png)<!-- -->
 
-figure 3.20 shows the same data as the bar charts shown earlier.
+Figure 3.20 shows the same data as the bar charts shown earlier.
 However, it is harder to compare the groups as the proportions are quite
 similar. One possible solution to this issue is to add labels with the
 values onto each slice:
