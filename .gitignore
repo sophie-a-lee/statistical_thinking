@@ -8,5 +8,6 @@
 *.pdf
 *.Rproj
 *.docx
+.R
 
 course_notes_files/
