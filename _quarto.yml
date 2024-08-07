@@ -1,0 +1,33 @@
+project:
+  type: book
+
+book:
+  title: "Statistical thinking"
+  author: "Sophie Lee"
+  search: true
+  sidebar:
+    collapse-level: 1
+    style: docked
+  repo-url: https://github.com/sophie-a-lee/statistical_thinking
+  repo-actions: [edit]
+  downloads: [pdf]
+  sharing: [twitter]
+  chapters:
+    - index.qmd
+    - 01_research_qs.qmd
+    - 02_visualisation.qmd
+    - 03_summarising.qmd
+    - 04_comparisons.qmd
+    - 05_inferences.qmd
+    
+
+format:
+  html:
+    theme: 
+      light: pulse
+      dark: darkly
+  pdf:
+    documentclass: scrreprt
+
+
+

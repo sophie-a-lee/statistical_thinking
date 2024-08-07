@@ -3,9 +3,7 @@
 .RData
 .Ruserdata
 
-# Ignore Rmd file
-*.rmd
-*.pdf
-*.Rproj
-*.docx
-*.R
+# Ignore old files
+old_files/
+
+/.quarto/

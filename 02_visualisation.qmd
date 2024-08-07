@@ -1,0 +1,739 @@
+---
+knitr:
+  opts_chunk: 
+    echo: false
+    message: false
+    fig.align: center
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+
+pacman::p_load(tidyverse, cowplot, flextable)
+```
+
+# Data visualisation
+
+Data visualisation is a powerful tool with multiple important uses. First, visualisations allow us to explore the data, identify potential outliers and errors, or check that the variables behave in the way we would expect them to if they have been recorded correctly. Visualisations can also be used as an analysis tool, allowing us to identify trends in the data or differences between groups. Finally, visualisations can help to convey messages to an audience in a clear, concise way that is often more powerful than presenting them using numbers or text. In some cases, data visualisations can show results so clearly that further analysis is arguably unnecessary. 
+
+
+A gruesome example of this was found after the arrest of Harold Shipman, one of Britain’s most prolific serial killers. Harold Shipman was convicted of murdering hundreds of his mostly elderly patients with an overdose of opiates, often administered in their homes. After his conviction, investigators questioned whether he could have been caught earlier. The visualisation below shows the time at which patients died who were registered at other local GP surgeries against the time of death for those who saw Harold Shipman. The difference is so stark that it can be argued that no formal statistical analysis would be required to confirm this.
+
+```{r}
+#| label: shipman-example
+
+
+shipman <- read_csv("Data/00-2-shipman-times-x.csv") %>% 
+  pivot_longer(Shipman:Comparison, 
+               names_to = "gp", 
+               values_to = "perc_death") %>% 
+  mutate(gp = factor(gp, levels = c("Shipman", "Comparison")))
+
+ggplot(data = shipman) +
+  geom_line(aes(x = Hour, y = perc_death, colour = gp), 
+            linewidth = 1) +
+  scale_colour_manual(name = "GP",
+                      values = c("firebrick", "blue")) +
+  labs(caption = str_wrap("Percentage of deaths by hour of the day for Harold Shipman vs. the average GP practice in England"),
+       y = "% of deaths") +
+  theme_light()
+```
+
+Often, trends and differences in data will not be so obvious, but it is important to understand which data visualisations can be useful in different settings. This section will introduce some of the most common data visualisations, provide examples of these using real data, and highlight important characteristics of each visualisations, as well as potential flaws to be aware of. Throughout the section, we will consider principles of data visualisation that must be followed to ensure they are informative, compelling, truthful, and accessible.
+
+## Choosing the most appropriate visualisation
+The most appropriate choice of visualisation will depend on the type of variable(s) we wish to display, the number of variables and the message we are trying to disseminate. Common plots used to display combinations of different types of data are given in following table: 
+
+```{r}
+#| label: tbl-visualisation-type
+#| tbl-cap: "Table showing the most common data visualisation methods by number and type of variable(s)."
+
+vis_tab <- data.frame(n_vars = c(rep("One variable", 5), 
+                                 rep("Two variables", 5),
+                                 rep("> 2 variables", 2)),
+                      type_vars = c(rep("Categorical", 2), "Numerical",
+                                    "Spatial", "Temporal", 
+                                    rep("Two categorical", 2), 
+                                    rep("One numeric, one categorical", 2), 
+                                    "Two numerical", "> 2 categorical", 
+                                    "2 numeric, one categorical \nor > 2 numeric"),
+                      visualisation = c("Frequency table", "Bar chart", 
+                                        "Histogram", "Map", "Line plot", 
+                                        "Frequency table", 
+                                        "Stacked/side-by-side bar chart", 
+                                        "Dot plot", "Box plot", "Scatterplot", 
+                                        "Table", 
+                                        "Scatterplot with different \ncolours/symbols/sizes"))
+
+flextable(vis_tab) %>% 
+  set_header_labels(n_vars = "Number of variables", 
+                    type_vars = "Type of variables", 
+                    visualisation = "Visualisation") %>% 
+  merge_at(i = 1:5, j = 1) %>% 
+  merge_at(i = 6:10, j = 1) %>% 
+  merge_at(i = 11:12, j = 1) %>% 
+  merge_at(i = 1:2, j = 2) %>% 
+  merge_at(i = 6:7, j = 2) %>% 
+  merge_at(i = 8:9, j = 2) %>% 
+  autofit() %>% 
+  hline(part = "body", i = c(5, 10, 12)) %>%
+  hline(i = c(2, 3, 4, 7, 9, 11), j = 2) %>% 
+  hline(part = "all", j = 3) %>% 
+  bold(part = "header") %>% 
+  bg(part = "all", bg = "gray95")
+```
+
+:::{.callout-tip}
+This list of common visualisations is far from comprehensive. If you would like a list of more options, including some non-standard graphs, visit the [From Data to Viz website](https://www.data-to-viz.com/).
+:::
+
+## Visualising a single, numeric variable
+**Histograms** are a common data visualisation method for a single numeric variable. Histograms consist of bars that show the number of observations in a sample that lie within a numeric range: the higher the bar, the more common those values are. They are used to check the distribution (or shape) of variables, and are useful to identify outliers and potential errors in the data. The distribution we are most often checking for is the **normal distribution**, also known as a bell-shaped curve, which occurs naturally in many variables and is a common assumption for many statistical methods. 
+
+A normal distribution is characterised by a single peak in the centre of the histogram, also known as the average or mean. The histogram will then have two symmetric tails that show more ‘extreme’ values become less common as they are further from the average:
+
+```{r}
+#| label: normal-distribution
+#| fig-width: 5
+#| fig-height: 3
+
+normal_df <- tibble(x1 = seq(-4, 4, length=100)) %>% 
+  mutate(y1 = dnorm(x1))
+
+ggplot(normal_df) +
+  geom_density(aes(x = x1, y = y1), linewidth = 1,
+               stat = "identity", fill = "thistle") +
+  theme_void()
+```
+
+The histogram below shows the settlement funding assessment (SFA) for each local authority in England in 2015 given in millions of pounds:
+
+```{r}
+#| label: fig-sfa-histogram
+#| fig-cap: "Histogram showing the settlement funcing assessment (SFA) in English local authorities in 2015."
+
+csp_2015 <- read_csv("Data/CSP_2015.csv") %>% 
+  filter(sfa_2015 != 0) %>% 
+  mutate(region_fct = factor(region, 
+                             levels = c("L", "NW", "NE", "YH", 
+                                        "WM", "EM", "EE", "SW",
+                                        "SE")))
+
+ggplot(data = csp_2015) + 
+  geom_histogram(aes(x = sfa_2015), fill = "grey", colour = "black") + 
+  labs(x = "Settlement funding assessment (£ millions)",
+       y = "Frequency") +
+  # add arrows to two outliers
+    annotate(geom = "curve", x = 950, y = 55, xend = 1150, yend = 5, 
+             curvature = -.3, arrow = arrow(length = unit(2, "mm"))) +
+      annotate(geom = "curve", x = 850, y = 55, xend = 600, yend = 5,
+               curvature = .3, arrow = arrow(length = unit(2, "mm"))) +
+  annotate(geom = "text", x = 852, y = 60, 
+           label = "outliers", hjust = "left") +
+  theme_light()
+```
+
+The first thing we can see from this histogram is that it is clearly not a normal distribution. The peak of the sample distribution is close to 0, and there is a very long upper tail which is not symmetrical to a lower tail. Another important thing to note is the presence of outliers. Most local authorities had an SFA of approximately £300 million or less. There are two observations that have values much larger than this which must be investigated. 
+
+
+The highest value on the histogram represents the Greater London Authority with an SFA of £1,163 million, the second is from Birmingham with an SFA of £612 million. Observations should only be removed from a sample if they should not be included in an analysis. The Greater London Authority is a collection of smaller local authorities that are already in the dataset. This value must be removed before any further analysis is carried out to avoid duplicating observations. However, the Birmingham observation represents a single local authority that has a large value because it covers a large population. The Birmingham observation should not be removed from the analysis as it is not an error, but we should make a note that there is an outlier in the SFA variable as this could influence certain results if further statistical analysis is carried out on this data. 
+
+The updated histogram, without the Greater London Authority duplicate, is given below. Notice that the x axis limits have changed:
+
+```{r}
+#| label: fig-sfa-hist-nolon
+#| fig-cap: "Histogram showing the settlement funcing assessment (SFA) in English local authorities in 2015, with Greater London Authority duplicate removed."
+
+csp_nolon <- csp_2015 %>% 
+  filter(authority != "Greater London Authority")
+
+ggplot(data = csp_nolon, aes(x = sfa_2015)) + 
+  geom_histogram(fill = "grey", colour = "black") + 
+  labs(x = "Settlement funding assessment (£ millions)",
+       y = "Frequency") +
+  theme_light()
+```
+
+
+When the objective of a histogram is to check the distribution of a numerical variable, a density curve can be added to the histogram which aims to smooth the bars into a continuous curve. These curves are usually easier to compare to a distribution of interest:
+
+
+```{r}
+#| label: fig-sfa-hist-density
+#| fig-cap: "Histogram showing the settlement funcing assessment (SFA) in English local authorities in 2015 with density line added."
+
+ggplot(csp_nolon, aes(x = sfa_2015)) + 
+  geom_histogram(aes(y = after_stat(density)), 
+                 fill = "grey", colour = "black")+
+  geom_density(fill="salmon", alpha = .2) +
+  labs(x = "Settlement funding assessment (£ millions)", 
+       y = "Density") + 
+  theme_light() 
+```
+
+
+The density line is far from symmetric, indicating a **skewed distribution**. A skewed (non-normal) continuous variable is not a sign of an error. In this example, a highly skewed variable is to be expected. The majority of local authorities in England consist of small populations with a minority representing large cities (for example, the Birmingham local authority identified above) with much higher spending. 
+
+
+As with all data visualisations, it is important to ensure that a histogram is showing the data in the clearest way. Histograms’ appearances are heavily influenced by the width of the bars (sometimes referred to as 'bins') shown on the plot. The number of bars on a histogram must be large enough to detect important trends and peaks in the data, but not so large that the shape becomes overwhelming and difficult to interpret.
+
+
+Figures @fig-sfa-histogram - @fig-sfa-hist-density have 30 bars (the default set by some statistical software packages). When we reduce the number of bars to 15, the curve becomes smoother but the dip in distribution at around £50 million is no longer visible:
+
+```{r}
+#| label: fig-sfa-hist-15bars
+#| fig-cap: "Histogram showing the settlement funcing assessment (SFA) in English local authorities in 2015."
+
+ggplot(data = csp_nolon) + 
+  geom_histogram(aes(x = sfa_2015), 
+                 bins = 15, fill = "grey", colour = "black") + 
+  labs(x = "Settlement funding assessment (£ millions)",
+       y = "Frequency") +
+  theme_light() 
+```
+
+If the number of bars is increased to 100, we can see there are many small peaks in the data that we were not able to see with wider bars, however the overall distribution of the data becomes more difficult to interpret:
+
+```{r}
+#| label: fig-sfa-hist-100bars
+#| fig-cap: "Histogram showing the settlement funcing assessment (SFA) in English local authorities in 2015."
+
+
+ggplot(data = csp_nolon) + 
+  geom_histogram(aes(x = sfa_2015), 
+                 bins = 100, fill = "grey", colour = "black") + 
+  labs(x = "Settlement funding assessment (£ millions)",
+       y = "Frequency") +
+  theme_light() 
+```
+
+When creating histograms, it is important to try different numbers of bars to ensure that important trends are not missed. When interpreting histograms, we must keep in mind that a very small number of bars may be hiding something.
+
+## Visualisations to compare numeric variables between groups
+Although histograms are useful to visualise the distribution of a numeric variable across a whole sample, we often want to compare a variable between groups. The choice of visualisation will depend on which aspect of the numeric variable we are interested in comparing, for example the entire distribution or some kind of summary of the groups. In this section, we will compare the settlement funding assessment (SFA) of local authorities in England in 2015 from the previous section between regions, using visualisations that show an increasing amount of information.
+
+### Bar chart of averages
+The simplest, least informative comparison of SFA between regions would be to show the average of each group. This can be done using a **bar chart** which will consist of a bar per region. The length of each bar will represent the average SFA for the region it represents. The most common choice of average for charts of this sort is the mean. We shall discuss in later sections why this may not be the most appropriate choice.
+
+```{r}
+#| label: fig-sfa-average-bar
+#| fig-cap: "Bar chart showing the mean SFA in English regions in 2015."
+
+
+ggplot(data = csp_nolon) +
+  geom_bar(aes(x = region_fct, y = sfa_2015), 
+           stat = "summary", fun = "mean",
+           fill = "grey", colour = "black") +
+  labs(x = "Region", 
+       y = "Mean settlement funding assessment (£ millions)") +
+  theme_light() 
+```
+
+This bar chart shows that local authorities in London had the highest SFA on average, while the East Midlands and South East had the lowest. The chart is clear and easily interpretable but is missing a considerable amount of information. In particular, the chart does not give any information about the spread of values in each group. Although the group averages look different, there is likely overlap in values in each of the groups. 
+
+### Box plot
+A common visualisation to compare average values across groups, whilst also showing measure of spread, is a **boxplot**. Boxplots contain a measure of the centre of each group, given by the median, surrounded by a box with limits defined by the interquartile range (IQR). The IQR is the difference between the 75th percentile (the value below which 75% of the sample lies) and the 25th percentile (the value below which 25% of the sample lies), giving the range of the middle 50% of the sample. The box has whiskers attached that give the range excluding outlier, and outliers are highlighted as points on the plot. The definition of outlier differs across software, however a common definition used for the boxplot below is any observation that lies further than 1.5 times the IQR from the box. 
+
+```{r}
+#| label: fig-boxplot-sfa-region
+#| fig-cap: " Boxplot comparing the SFA between regions of England, 2015." 
+
+
+ggplot(data = csp_nolon) +
+  geom_boxplot(aes(x = region_fct, y = sfa_2015)) +
+  labs(x = "Region", 
+       y = "Settlement funding assessment (£ millions)") +
+  theme_light() 
+```
+
+This boxplot shows far more information than the bar chart of averages. We can clearly see the outlier which was identified earlier as Birmingham. We can also see that, although London has the highest average SFA, there is quite a large overlap of values with other regions. The East Midlands, East England, and South East regions had a large number of outliers and a very small IQR which should be investigated further. 
+
+
+The dataset shows that the many outliers are not errors, these regions consist mostly of very small local authorities with very low spending and few towns and cities that have substantially higher spending. Therefore, any larger areas in these regions will appear as outliers compared to the very small local authorities. 
+
+### Violin plot
+We gain more information from the box plot compared to the bar chart but we are still losing a lot of information by only showing summary measures. We can see the range of the middle 50% but we are not able to see how those values are distributed. **Violin plots** show the density of groups, similar to the density curve added to the histogram previously but rotated 90 degrees. Violin plots show the full sample and are particularly useful where a distribution does not have a single peak (which is assumed by box plots).
+
+```{r}
+#| label: fig-sfa-violin
+#| fig-cap: "Violin plot comparing the SFA between regions of England, 2015."
+ggplot(data = csp_nolon) +
+  geom_violin(aes(x = region_fct, y = sfa_2015)) +
+  labs(x = "Region", 
+       y = "Settlement funding assessment (£ millions)") +
+  theme_light() 
+```
+
+One benefit of this violin plot compared to the boxplot is that we can see the very bottom-heavy distribution of SFA in the East Midlands, East England and South East regions which explains the large number of outliers in the boxplots. However, the violin plot of SFA per region is difficult to interpret with so many regions. 
+
+### Dot plot
+As violin plots are produced using density estimates from the data, they are still not giving all information from the sample. They are also not very useful where there are long-tailed distributions, as we can see in the West Midlands region in the previous plot, as they can give the illusion of data existing where it does not (between the outlier and the rest of the group). To overcome these issues, we can show every observation in the sample as points, separated into groups, in a **dot plot**. Dot plots have the same axes layout as the previous plots, with grouping on the x axis and the numeric variable on the y-axis.
+
+```{r}
+#| label: fig-dotplot-sfa-region
+#| fig-cap: "Dot plot comparing the SFA between regions of England, 2015."
+ggplot(data = csp_nolon) +
+  geom_point(aes(x = region_fct, y = sfa_2015)) +
+  labs(x = "Region", 
+       y = "Settlement funding assessment (£ millions)") +
+  theme_light() 
+```
+
+Without checking, this dot plot appears to show every local authority’s SFA grouped by region. However, there are many local authorities that have very similar SFA values that can not be seen as they are currently lying on top of one another. To overcome this, a dot plot can be adapted by spreading the points out along the x-axis, also known as **jittering**:
+
+```{r}
+#| label: fig-jitter-sfa-region
+#| fig-cap: "Dot plot comparing the SFA between regions of England, 2015. Dots are jittered to show them clearly."
+ggplot(data = csp_nolon) +
+  geom_jitter(aes(x = region_fct, y = sfa_2015), width = .2) +
+  labs(x = "Region", 
+       y = "Settlement funding assessment (£ millions)") +
+  theme_light() 
+```
+
+By jittering the points, we can now see the differences in the distribution of points in each region. The outlier of Birmingham is clearly visible, as are the bottom-heavy distributions of some regions. We can clearly see the differences in the number of observations in each region. For example, it is clear that the North East region has less local authorities and less variability compared to other regions. One thing that is not clear from this dot plot that was clear from previous plots, is that the London region had the highest average SFA. 
+
+### Multi-layer plots
+Sometimes a single choice of plot will not be enough and multiple visualisations are needed. In this case, we may wish to express the differences in summary statistics between regions, without losing information about the overall distribution and density of the sample. One solution would be to provide a boxplot with points added as an extra layer to the plot:
+
+
+```{r}
+#| label: fig-dot-box-sfa-region
+#| fig-cap: "Dot plot comparing the SFA between regions of England, 2015, overlayed with boxplots."
+
+ggplot(data = csp_nolon, 
+       aes(x = region_fct, y = sfa_2015)) +
+  geom_boxplot(width = .15, outlier.shape = NA, position = "dodge") +
+  # Adds points, jittered as there is a lot of overlap
+  geom_jitter(alpha = .3, width = .2) +
+labs(x = "Region", 
+       y = "Settlement funding assessment (£ millions)") +
+  theme_light() 
+```
+
+This final plot clearly shows the differences in the average SFA between regions, the outlier in the West Midlands region (Birmingham), and the differences in the shapes of distributions between regions. Although we have added an extra layer to each plot, the message of both is still clear and easily interpretable. 
+
+:::{.callout-warning}
+Show as much relevant data as possible, maximising the amount of information given in the smallest amount of space. **This does not mean showing all of the data.** Overloading a plot can lead to confusion. Adding too many layers to the same visualisation can make it less informative, hiding important messages.
+:::
+
+## Visualising a single, categorical variable
+
+Visualising categorical variables involves describing their distribution between categories. This can be done using counts or the proportion of observations in each group. 
+
+### Frequency table
+Both counts and proportions/percentages can be displayed using **frequency tables**. For example, the number of recorded crimes in the East Midlands in 2023, categorised by police force:
+
+```{r}
+#| label: tbl-recorded-crime-em
+#| tbl-cap: "The number and percentage of crimes recorded by police area in the East Midlands region of England, 2023."
+
+recorded_crime_em <- read_csv("Data/recorded_crime_2023.csv") %>% 
+  filter(area_code %in% c("E23000018", "E23000021", "E23000020", "E23000022",
+                          "E23000019")) 
+
+recorded_crime_total <- recorded_crime_em %>% 
+  select(area_name, total_recorded_crime) %>% 
+  mutate(perc_crime = paste0(round((total_recorded_crime / 
+                                      sum(total_recorded_crime)) * 100, 
+                                   2), 
+                             " %"))
+
+flextable(recorded_crime_total) %>% 
+  set_header_labels(area_name = "Area name",
+                    total_recorded_crime = "Total recorded crimes",
+                    perc_crime = "Percentage of total crimes") %>% 
+  autofit() %>% 
+  bold(part = "header") %>% 
+  bg(part = "all", bg = "grey95")
+  
+```
+
+Frequency tables can provide a lot of information and, where there are not many categories, can be easy to interpret. However, they can quickly become overwhelming when there are many categories displayed, patterns in the data can be harder to spot, and they can look boring.
+
+
+### Bar chart
+The same data can be displayed using a **bar chart**, the categorical equivalent of a histogram, where the length of each bar represents the number of observations in the category:
+
+```{r}
+#| label: fig-recorded-crime-em
+#| fig-cap: "Bar chart showing number of recorded crimes in the East Midlands region of England, 2023."
+
+
+ggplot(data = recorded_crime_total) + 
+  geom_bar(aes(x = area_name, y = total_recorded_crime), 
+           stat = "identity", colour = "black", fill = "grey") +
+  labs(y = "Total recorded crimes", x = "Area") +
+  theme_light() 
+```
+
+Although this bar chart is also not particularly interesting, our eyes are immediately drawn to the differences between groups. We can immediately see that Lincolnshire and Northamptonshire had fewer recorded crimes than the other police force areas, and that Leicestershire and Nottinghamshire had the highest number of recorded crimes and were at a similar level. 
+
+
+Bar charts can be formatted to draw attention to important results, for example by ordering the bars from largest to smallest frequencies to highlight the differences in groups (note that this is only appropriate where there is no ordering to the groups):
+
+```{r}
+#| label: fig-recorded-crime-em-order
+#| fig-cap: "Bar chart showing number of recorded crimes in the East Midlands region of England, 2023. Bars are ordered to make the differences in police areas clearer."
+
+
+ggplot(recorded_crime_total) + 
+  geom_bar(aes(x = reorder(area_name, -total_recorded_crime), 
+               y = total_recorded_crime), stat = "identity",
+           colour = "black", fill = "grey") + 
+  labs(y = "Total recorded crimes", x = "Area") +
+  theme_light() 
+```
+
+
+Colours can also be used to emphasise groups that are of interest to the audience. For example, if this graph was displayed as part of an investigation into crime levels in Derbyshire, we could change the colour of this bar to draw attention to it:
+
+```{r}
+#| label: fig-recorded-crime-em-colour
+#| fig-cap: "Bar chart showing number of recorded crimes in the East Midlands region of England, 2023. Derbyshire has been highlighted to draw readers' attention."
+recorded_crime_total %>% 
+  mutate(fill_reg = factor(if_else(area_name == "Derbyshire", 1, 0))) %>% 
+  ggplot() + 
+  geom_bar(aes(x = reorder(area_name, -total_recorded_crime), 
+               y = total_recorded_crime, fill = fill_reg), stat = "identity",
+           colour = "black") + 
+  scale_fill_manual(values = c("grey", "orchid")) +
+  labs(y = "Total recorded crimes", x = "Area") +
+  theme_light() +
+  theme(legend.position = "none")
+```
+
+:::{.callout-tip}
+Characteristics such as colours that naturally draw people's attention within a visualisation are known as **preattentive attributes**. There are several categories of preattentive attributes that can be used to make important messages clearer: 
+
+-	Spatial attributes (e.g. spatial grouping, enclosure, length, and width),
+-	Colour attributes (including differences in colour hue or intensity), 
+-	Attributes of form (including size and shape).
+:::
+
+We can also swap the axes so that the bars run horizontally and the frequencies are shown on the x axis. This can sometimes make the ordering and length of the bars easier to read, or can make the graph more compact where the group labels are long:
+
+```{r}
+#| label: fig-recorded-crime-em-horizontal
+#| fig-cap: "Horizontal bar chart showing number of recorded crimes in the East Midlands region of England, 2023."
+ggplot(recorded_crime_total) + 
+  geom_bar(aes(x = reorder(area_name, total_recorded_crime), 
+               y = total_recorded_crime), stat = "identity",
+           colour = "black", fill = "grey") + 
+  labs(y = "Total recorded crimes", x = "Area") +
+  coord_flip() +
+  theme_light() 
+```
+
+When creating or interpreting visualisations, we want to ensure the information being shown is not misleading or distorted in any way. One way to avoid misleading readers is to follow the **principle of proportional ink**. This means that the amount of ink used in a visualisation should be proportional to the quantities it is representing. A common example of a violation in this principle is where a bar chart’s x-axis does not begin at 0. The differences in the lengths of bars is no longer representative of the differences between groups, leading to a distortion in the message.
+
+For example, using the recorded crime data, we could set the frequency axis to begin at 50,000 as all counts were higher than this:
+
+```{r}
+#| label: fig-recorded-crime-em-axis
+#| fig-cap: "Bar chart showing number of recorded crimes in the East Midlands region of England, 2023. The y-axis starts at 50,000 rather than 0."
+
+
+ggplot(data = recorded_crime_total) + 
+  geom_bar(aes(x = area_name, y = total_recorded_crime), 
+           stat = "identity", colour = "black", fill = "grey") +
+  coord_cartesian(ylim= c(50000, 100000)) +
+  scale_y_continuous(labels = scales::label_number()) +
+  labs(y = "Total recorded crimes", x = "Area") +
+  theme_light() 
+```
+
+Although the plot shows the same information as the others, the smaller counts appear much smaller than the original plot and the difference between the highest and lowest values is more pronounced. Although this plot is showing the same information, this small change has affected how our brains interpret the results. 
+
+### Pie chart
+An alternative approach to summarising and visualising categorical variables is to use proportions. One benefit of considering proportions as opposed to the counts is that they allow us to take account of the sample size and put counts into context. Proportions of a single sample can be visualised using a **pie chart**. Each ‘slice’ of the pie represents a category and the size of the slice represents the proportion of the sample that lies within that group.
+
+For example, a pie chart can be used to display the same data as @fig-recorded-crime-em but with each area given as a proportion of the whole region: 
+
+```{r}
+#| label: fig-crime-pie
+#| fig-cap: "Pie chart showing the proportion of recorded crimes in each area of the East Midlands region of England, 2023"
+
+
+ggplot(data = recorded_crime_total) +
+  geom_bar(aes(x = "", y = total_recorded_crime, fill = area_name),
+           stat = "identity", width =1, colour = "white") + 
+  labs(fill = "Area") +
+  coord_polar("y", start = 0) + 
+  theme_void() 
+```
+
+Although @fig-crime-pie shows the same data as @fig-recorded-crime-em, it is harder to compare the groups as the proportions are quite similar. One possible solution to this issue is to add labels with the values onto each slice:
+
+```{r}
+#| label: fig-crime-pie-labels
+#| fig-cap: "Pie chart showing the proportion of recorded crimes in each area of the East Midlands region of England, 2023. Labels have been added for more context."
+
+
+recorded_crime_total %>% 
+  arrange(desc(area_name)) %>% 
+  mutate(prop = total_recorded_crime / sum(total_recorded_crime) * 100,
+         ypos = cumsum(prop) - .5*prop) %>% 
+  ggplot() + 
+  geom_bar(aes(x = "", y = prop, fill = area_name),
+           stat = "identity", width = 1, colour = "white") +
+  labs(fill = "Area") +
+  coord_polar("y", start = 0) +
+  theme_void() +
+  geom_text(aes(x = "", y = ypos, label = total_recorded_crime), 
+            colour = "black", size = 4) 
+```
+
+:::{.callout-warning}
+Research shows that people’s perception of dots, lines and bars are more accurate than distinguishing between angles, proportions and colour hues. This is why pie charts, are harder to interpret than bar charts, particularly where differences between groups are small.
+
+Pie charts are generally discouraged because they are more difficult to interpret than bar charts or frequency tables. If pie charts are used, annotations such as the labels in @fig-crime-pie-labels should be used to avoid misinterpretation.
+:::
+
+## Visualisations to compare categorical variables between groups
+
+Bar charts introduced in the previous section can be extended to include a further grouping variable and used to compare the distribution of observations between categories across groups. **Stacked bar charts** are used to compare the proportion of observations in different categories across groups, whereas **side-by-side bar charts** compare counts. 
+
+### Stacked bar chart
+
+A stacked bar chart is useful where the total number in each group is important, as well as the distribution of these groups between categories. As with a standard bar chart, the total number of observations in each group determines the length of the bar. These bars consist of multiple smaller bars that represent the number of observations in each category. 
+
+
+For example, using the data from the previous section, we can compare the overall number of recorded crimes, as well as the different types of crimes, between police forces in the East Midlands:
+
+```{r}
+#| label: fig-stacked-bar-crime
+#| fig-cap: "Stacked bar chart showing the total number of recorded crimes in the East Midlands regions of England, 2023, shown by police force and crime type."
+
+
+recorded_crime_em_long <- recorded_crime_em %>% 
+  select(-total_recorded_crime) %>% 
+  pivot_longer(cols = violent_crime:misc_crimes,
+               names_to = "crime_type",
+               values_to = "count") %>% 
+  mutate(crime_type_fct = factor(crime_type,
+                                 levels = c("violent_crime","sexual_offences",
+                                            "robbery", "theft_offences",
+                                            "criminal_damage",
+                                            "drug_offences",
+                                            "possession_of_weapon", 
+                                            "public_order", "misc_crimes"),
+                                 labels = c("Violent", "Sexual",
+                                            "Robbery", "Theft", 
+                                            "Criminal\ndamage",
+                                            "Drugs", "Possession\nof weapon",
+                                            "Public order", "Miscelaneous")))
+
+
+ggplot(data = recorded_crime_em_long) +
+  geom_bar(aes(x = area_name, y = count, fill = crime_type_fct),
+           stat = "identity", colour = "black") +
+  labs(x = "Police force", y = "Count", fill = "Crime type") +
+  coord_flip() +
+  theme_light() + 
+  theme(legend.position = "bottom") 
+
+```
+
+This bar chart clearly shows that Nottinghamshire and Leicestershire had the highest recorded crimes, and Lincolnshire and Northamptonshire had the lowest, which we had already seen previously. In addition to the findings from the previous bar charts, we can now see that the largest proportion of crimes across all police forces were violent crimes and theft. The distribution across types of crimes seems similar between police forces. If the distribution between the types of crimes is more important than comparing the total number per police force, we may also consider a **proportion stacked bar chart**. 
+
+
+### Proportion stacked bar chart
+
+Proportion stacked bar charts are an alternative to the stacked bar chart which compares the proportion of each group that lie in different categories. The length of each bar is equal to 1 (representing the whole group size), and consists of smaller bars representing the proportion of the group in a category. These are particularly useful when differences in group sizes are not important, but the relative distributions between groups are.
+
+```{r}
+#|label: fig-proportion-bar-crime
+#|fig-cap: "Bar chart showing the proportion of crime types recorded by police areas in the East Midlands region, 2023."
+
+
+ggplot(data = recorded_crime_em_long) +
+  geom_bar(aes(x = area_name, y = count, fill = crime_type_fct),
+           stat = "identity", position = "fill", colour = "black") +
+  labs(x = "Police force", y = "Proportion", fill = "Crime type") +
+  coord_flip() +
+  theme_light() + 
+  theme(legend.position = "bottom") 
+```
+
+The proportion bar chart confirms that the distribution of different crime types is similar across police forces, regardless of the total number of crimes. 
+
+### Side-by-side bar chart
+
+Side-by-side bar charts allow us to compare the number of observations in each category between groups. The smaller bars that make up a stacked bar chart are placed next to one another, meaning the length of bars now represents the total observations per category per group. They are useful when comparison of the overall total of groups is not important, and where there is a small number of groups and/or categories to compare between.
+
+
+The previous example would require 45 bars in total (9 bars for each of the 5 police forces). This would be almost impossible to show clearly on one axis, so for this example, we will compare the three most common types of crime between forces: violent, theft, and public order.
+
+```{r}
+#| label: fig-sidebyside-crime
+#| fig-cap: "Side-by-side bar chart showing the number of recorded violent, theft, and public order crimes, separated by police area, from the East Midlands region, 2023."
+
+
+recorded_crime_em_long %>% 
+  filter(crime_type_fct %in% c("Violent", "Theft", "Public order")) %>% 
+  ggplot() +
+  geom_bar(aes(x = area_name, y = count, fill = crime_type_fct),
+           stat = "identity", position = "dodge", colour = "black") +
+  labs(x = "Police force", y = "Count", fill = "Crime type") +
+  theme_light() + 
+  theme(legend.position = "bottom") 
+```
+
+All three bar charts show the same information in different formats. The most appropriate choice of these would depend on the motivation behind the plot. For example, are we interested in comparing the overall total crimes between regions? In which case, a stacked bar chart would be most useful. Would we prefer to compare the distribution of the different types of crimes between regions? Then a proportional stacked bar chart might be helpful. Or is the intention of the plot to compare the total of a certain type of crimes between regions, rather than the overall total? Then a side-by-side bar chart would be most appropriate.
+
+## Visualisations for two or more numeric variables
+Visualising single variables is important when checking the data for errors and distributions. However, we often want to investigate relationships between multiple variables in a dataset. When exploring the relationship between two numeric variables, we should consider a **scatterplot**. One of the numeric variables is displayed on the vertical, or y-axis (often the outcome of interest or dependent variable), and the other is displayed on the horizontal, or x-axis (usually the explanatory variable). Each observation is represented with a point on the graph area. 
+
+
+Scatterplots are useful to explore the data and identify outliers/errors which may not be as clearly visible in univariate plots. Scatterplots are also useful to generate hypotheses about the relationship between variables. For example, whether they are positive or negative.They can also explore the nature of relationships in terms of whether they are linear or not, which is a requirement of some statistical methods.
+
+
+The scatterplot below shows the relationship between cancer mortality in US counties in 2015 and the level of poverty in these counties. Cancer mortality rate has been given on the y-axis as this is the outcome of interest which we think may be dependent on poverty (the explanatory variable):
+
+```{r}
+#| label: fig-scatter-cancer
+#| fig-cap: "Scatterplot showing the relationship between cancer mortality rate and poverty in US counties in 2015."
+
+
+cancer_reg <- read.csv("Data/cancer_reg.csv")
+
+cancer_poverty_scatter <- ggplot(data = cancer_reg,
+                                 aes(y = mortality_rate, x = poverty)) +
+  geom_point() +
+  labs(x = "% of residents living in poverty",
+       y = "Cancer mortality rate (per 100,000 residents)") +
+  theme_light() 
+
+cancer_poverty_scatter
+```
+
+The scatterplot shows there are no unexpected outliers, and there appears to be a positive linear relationship between these variables. That is, as the percentage of the population living in poverty increases, the cancer mortality appears to increase on average. Note that we are not making inferences about the total population, nor are inferring causation from this graph.
+
+
+This potential relationship can be made clearer by adding a line of best fit to the scatterplot. There are different methods of estimating a line of best fit, the most common being a linear model. Linear models produce a line that minimises the difference between each point and the line drawn. Alternative methods are available where a linear relationship is not appropriate.
+
+```{r}
+#| label: fig-scatter-best-fit
+#| fig-cap: "Scatterplot showing the relationship between cancer mortality and poverty in US counties in 2015. A line of best fit has been added."
+
+
+cancer_poverty_scatter +
+  geom_smooth(method = "lm", se = FALSE)
+
+```
+
+Adding a line of best fit to @fig-scatter-cancer highlights the positive association between poverty rate and cancer mortality. Although the line does not fit the data perfectly, it gives an estimation of the direction and magnitude of this relationship which can be investigated formally using statistical analysis. 
+
+Scatterplots can be extended to show additional variables by changing the appearance of points. Categorical variables can be added using a difference colour or symbol for each group:
+
+```{r}
+#| label: fig-scatter-colour
+#| fig-cap: "Scatterplot showing cancer mortality and poverty levels in US counties in 2015, compared between unemployment levels."
+
+
+cancer_poverty_scatter + 
+  geom_point(aes(colour = factor(high_unemployment, levels = c(1,0), 
+                                 labels = c("Yes", "No")))) +
+  scale_colour_manual(name = "High unemployment",
+                      values = c("black", "red")) +
+  theme(legend.position = "bottom")
+```
+
+Unemployment level has been added to the plot using different colours, with the key given in the legend. On average, areas with high unemployment appeared to have higher levels of poverty and cancer mortality. We would expect unemployment and poverty level to be highly related and, given that higher levels of poverty appeared to be associated with higher mortality, also related to higher cancer mortality rates.
+
+
+If we believed that the relationship between the variables given on the x- and y-axes differed between groups, we could also provide a line of best fit per group rather than for the sample as a whole:
+
+```{r}
+#| label: fig-scatter-colour-line
+#| fig-cap: "Scatterplot showing cancer mortality and poverty levels in US counties in 2015, compared between unemployment levels. Lines of best fit have been added for each group."
+
+
+cancer_poverty_scatter + 
+  geom_point(aes(colour = factor(high_unemployment, levels = c(1,0), 
+                                 labels = c("Yes", "No")))) +
+  geom_smooth(aes(colour = factor(high_unemployment, levels = c(1,0), 
+                                  labels = c("Yes", "No"))),
+              method = "lm", se = F) + 
+  scale_colour_manual(name = "High unemployment",
+                      values = c("black", "red")) +
+  theme(legend.position = "bottom")
+```
+
+The lines of best fit have approximately the same gradient, indicating that the relationship between poverty and cancer mortality is approximately equal. However, the line for high unemployment is consistently higher than the other group which shows this group had a higher mortality rate on average at different poverty levels.
+
+
+Numeric variables can also be added to scatterplots by adjusting the colour or size of the points based on each observations’ value. For example, the average age of each county could be added using a sequential colour scheme:
+
+```{r}
+#| label: fig-scatter-age
+#| fig-cap: "Scatterplot showing cancer mortality, age, and poverty levels in US counties in 2015."
+cancer_poverty_scatter + 
+  geom_point(aes(colour = age)) + 
+  scale_colour_viridis_c(name = "Age", option = "D")
+```
+
+The relationship between age, poverty and cancer mortality is hard to decipher as most counties have similar average ages which is not obvious with a continuous colour palette. 
+
+:::{.callout-warning}
+When choosing a colour palette, be sure that all colours are distinct to everyone, including those with colour-vision deficiencies. To help check this is the case, use  a [colour blindness simulator](https://www.color-blindness.com/coblis-color-blindness-simulator/) to see what a visualisation looks like under different types of colour blindness. 
+
+For continuous data avoid cyclical palettes, such as the rainbow palette, to avoid confusion between high and low values.
+
+![](Images/rainbow_colours.png)
+:::
+
+Additional variables should only be included in data visualisations where they are needed and where they do not confuse the original message. Overloading a visualisation can make it hard to interpret and lose information. In some cases, it is better to have multiple, simple (but clear) plots rather than a single, complex plot. 
+
+
+## Visualising temporal data
+Where a variable has been measured repeatedly over time, we want to ensure that any visualisation makes it clear that these observations are related. The most common visualisation used for temporal data is a line graph. Line graphs have the measure of time along the x-axis and the variable measured over time on the y-axis. Each observation’s values are connected over time using a line. Line graphs are useful to explore trends over time, for example whether values have been increasing or decreasing. 
+
+```{r}
+#| label: fig-crime-line
+#| fig-cap: "Line graph showing the total recorded crimes in England between 2010 and 2020."
+
+
+violent_crime <- read.csv("Data/violent_crime.csv") 
+
+ggplot(data = violent_crime, 
+       aes(x = year, y = violent_crime)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(breaks = 2010:2020) +
+  labs(x = "Year", y = "Number of violent crimes recorded") +
+  theme_light() 
+```
+
+This line graph shows the number of violent crimes recorded in England between 2010 and 2020. From this simple graph, we can clearly see that there is a strong, downward trend. That is, the number of violent crimes recorded has decreased over the 10-year period. 
+
+
+Line graphs are not only useful at determining overall trends but also checking the data for inconsistencies. For example, all years experienced a decrease in recorded crimes apart from 2014 - 2015 where there was an increase. We could go back and check the source of the data, make a note of potential reasons for this difference, and be sure to communicate this as part of our interpretation.
+
+
+Line graphs can be used to compare trends between different groups by adding multiple lines to the same graph. For example, the following graph shows the number of magistrate court cases, by type, between 2012 and 2023. Each case type has a different coloured line, and the interactions between lines are clear:
+
+```{r}
+#| label: fig-line-court-type
+#| fig-cap: "Line graph showing the number of magistrate court cases by type in England, between 2013 and 2023."
+
+
+magistrate_data <- read.csv("Data/magistrate_data.csv") %>% 
+  pivot_longer(cols = Receipts:Outstanding,
+               names_to = "Type",
+               values_to = "Count")
+
+ggplot(data = magistrate_data, 
+       aes(x = Time, y = Count, colour = Type)) +
+  geom_line(linewidth = 1) +
+  geom_point() +
+  scale_x_continuous(name = "Year", breaks = c(seq(4, 44, 4)),
+                     labels = 2013:2023) +
+  labs(colour = "") +
+  theme_light() +
+  theme(legend.position = "bottom") 
+```
+
+This line graph is the perfect example of where a visualisation is more powerful than simply writing results in a table of texts. The drastic drop of disposals due to closure of magistrates courts during the COVID-19 pandemic is stark. This is coupled with the vast increase of outstanding cases which we can see has not returned to pre-COVID levels. This can be explained by the other lines on the graph as we can see that the number of receipts are almost back to previous levels, whereas the number of disposals has still not quite recovered.  
