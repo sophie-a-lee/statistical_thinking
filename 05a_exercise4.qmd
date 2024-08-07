@@ -1,0 +1,7 @@
+# Exercise 4: Inferential statistics {.unnumbered}
+
+Comment on the way in which these results have been presented. Are the results clear? What has been done well? Is there anything you think could be improved? Do the results shown appear to be valid (from the information we are given)?
+
+![](Images/only_connect_table.png)
+
+![](Images/only_connect_figs.png)

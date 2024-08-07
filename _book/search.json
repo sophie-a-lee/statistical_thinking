@@ -110,6 +110,36 @@
     ]
   },
   {
+    "objectID": "01a_exercise1.html",
+    "href": "01a_exercise1.html",
+    "title": "Exercise 1: research questions and missing data",
+    "section": "",
+    "text": "Question 1\nFor each of the following research questions, identify the Population, Intervention and Comparison (if applicable) and the Outcome.",
+    "crumbs": [
+      "Exercise 1: research questions and missing data"
+    ]
+  },
+  {
+    "objectID": "01a_exercise1.html#question-1",
+    "href": "01a_exercise1.html#question-1",
+    "title": "Exercise 1: research questions and missing data",
+    "section": "",
+    "text": "Does the introduction of a 4-day working week increase productivity in government departments?\nWhat is the average time between an offence being committed and case completion for defendants dealt with at magistrates’ courts in the North West of England?\nHow has the prison population in England and Wales changed compared to pre-pandemic levels?\n\n\n\n\n\n\n\nTip\n\n\n\nWhen breaking down a research question into PICO, it can help to picture the data set we would need to answer it.\nThe rows/observations will represent our target population.\nThe outcome will be the variable that we are measuring on this target population (not the average or difference that we will use this variable to calculate).\nIf there are comparison groups in the research questions, these would be included in the data as a categorical variable.",
+    "crumbs": [
+      "Exercise 1: research questions and missing data"
+    ]
+  },
+  {
+    "objectID": "01a_exercise1.html#question-2",
+    "href": "01a_exercise1.html#question-2",
+    "title": "Exercise 1: research questions and missing data",
+    "section": "Question 2",
+    "text": "Question 2\nProbation practitioners were asked to record details in an administrative system for analytical purposes not directly related to their work. Some practitioners were busy and forgot to record the data on the system, leading to holes in the data. Give a scenario where this would introduce bias into the analysis, and another where this would not cause bias.",
+    "crumbs": [
+      "Exercise 1: research questions and missing data"
+    ]
+  },
+  {
     "objectID": "02_visualisation.html",
     "href": "02_visualisation.html",
     "title": "2  Data visualisation",
@@ -190,6 +220,46 @@
     ]
   },
   {
+    "objectID": "02a_exercise2.html",
+    "href": "02a_exercise2.html",
+    "title": "Exercise 2: data visualisation",
+    "section": "",
+    "text": "Question 1",
+    "crumbs": [
+      "Exercise 2: data visualisation"
+    ]
+  },
+  {
+    "objectID": "02a_exercise2.html#question-1",
+    "href": "02a_exercise2.html#question-1",
+    "title": "Exercise 2: data visualisation",
+    "section": "",
+    "text": "Prison populations, March 2003 to 2023",
+    "crumbs": [
+      "Exercise 2: data visualisation"
+    ]
+  },
+  {
+    "objectID": "02a_exercise2.html#question-2",
+    "href": "02a_exercise2.html#question-2",
+    "title": "Exercise 2: data visualisation",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\nNumber of offenders under Probation Service supervision, 31 December 2013 to 2023",
+    "crumbs": [
+      "Exercise 2: data visualisation"
+    ]
+  },
+  {
+    "objectID": "02a_exercise2.html#question-3",
+    "href": "02a_exercise2.html#question-3",
+    "title": "Exercise 2: data visualisation",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\nProportion of outstanding cases at the Crown Court by grouped age, Q1 2014 – Q4 2023",
+    "crumbs": [
+      "Exercise 2: data visualisation"
+    ]
+  },
+  {
     "objectID": "03_summarising.html",
     "href": "03_summarising.html",
     "title": "3  Summarising data",
@@ -207,6 +277,36 @@
     "text": "3.2 Summarising numeric variables\nNumeric variables are typically summarised using the centre of the variable, also known as the average, and a measure of the spread of the variable. The most appropriate choice of summary statistics will depend on the distribution of the variable. More specifically, whether the numeric variable is normally distributed or not. The shape/distribution of a variable is typically investigated by plotting data in a histogram.\n\n3.2.1 Measures of centre\nThe average of a numeric variable is another way of saying the centre of its distribution. Often, people will think of the mean when trying to calculate an average, however this may not always be the case.\n\n\n\n\n\n\n\n\n\nWhen data are normally distributed, the mean is the central peak of the distribution. This is calculated by adding together all numbers in the sample and dividing it by the sample size. However, when the sample is not normally distributed and the peak does not lie in the middle, extreme values or a longer tail will pull the mean towards it. This means that where data are not normally distributed, the mean will not be the centre and the value will be invalid. Where this is the case, the median should be used instead. The median is calculated by ordering the numeric values from smallest to largest and selecting the middle value.\nLet’s consider the sample below of 10 students’ heights in centimeters from a high school class:\n142.23, 149.58, 146.06, 160.42, 174.64, 172.54, 148.67, 143.00, 173.11, 168.72\nTo calculate the mean height from this sample, we add these values together, giving 1578.97cm, and divide the total by 10. Therefore, the mean height of these 10 students is 157.897cm.\nThe median height is calculated by ordering the heights from smallest to largest:\n142.23, 143.00, 146.06, 148.67, 149.58, 160.42, 168.72, 172.54, 173.11, 174.64\nWe then take the middle value. As the sample size is even, the median will lie between two values - the 5th (149.58cm) and the 6th (160.42cm). To calculate the median, we add these values together and divide this by 2. The median of this sample is therefore 155cm.\nWhen data are normally distributed, the mean and median will give the same, or very similar, values. This is because both are measuring the centre. However, when the data are skewed, the mean and median will differ. We prefer to use the mean where possible as it is the more powerful measure. This means that it uses more of the data than the median and is therefore more sensitive to changes in the sample.\n\n\n3.2.2 Measures of spread\nGenerally the measure of the spread of a numeric variable is presented with a measure of spread, or how wide/narrow the distribution is. As with the spread, the most appropriate values will depend on whether the sample is normally distributed or not.\nThe most simple measure of spread is the range of a sample. The range is either presented as the smallest and largest values from a sample or the difference between these. From the sample of heights earlier, the range would either be given as [142.23cm, 174.64cm] or the difference between these values, 32.41cm.\nThe issue with using the range is that it is entirely defined by the most extreme values in the sample and does not give any information about the rest of it. An alternative to this would be to give the range of the middle 50%, also known as the interquartile range (IQR). The IQR is the difference between the 75th percentile, or upper quartile, and the 25th percentile, or lower quartile. As with the median, this is calculated by ordering the sample from smallest to largest. The sample is then cut into 4 and the quartiles are calculated. As with the range, the IQR can be given as the two values or the difference between them.\nThe lower quartile of the sample of 10 heights given earlier is the 3rd value in the ordered sample, 146.06cm, and the upper quartile is the 8th value in the ordered sample, 172.54cm. We could either present this as two values, or as the difference between them: 26.48cm. This means that 50% of the sample heights lie between 146.06cm and 172.54cm, or the width of the middle 50% of this sample is 26.48cm.\nBoth the range and IQR only use 2 values from the sample. As with the median, these measures discard a lot of information from the summaries. Where the sample is normally distributed, the standard deviation (SD) can be used which measures the average distance between each observation and the mean. The larger the SD, the wider and flatter the normal curve will be; the smaller the SD, the narrower and taller the curve will be:\n\n\n\n\n\n\n\n\n\nThe standard deviation is only appropriate where a numeric variable has a normal distribution, otherwise this value is meaningless. If a sample is normally distributed, then the entire sample can be completely described just using the mean and standard deviation, even when the sample values are not given. As the distribution is symmetrical, the mean and standard deviation can be used to estimate ranges of values. For example, it is known that approximately 68% of a sample will lie one standard deviation from the mean, approximately 95% within 2 standard deviations from the mean, and around 99.7% within 3 standard deviations:\n\n\n\n\n\n\n\n\n\nThis knowledge can also be used to check the mean and standard deviation were appropriate summary statistics, even if we have no other information. For example, we saw earlier a sample of settlement funding assessment (SFA) values for local authorities in England in 2015. Using a histogram, it was clear that this sample was not normally distributed. However, let’s assume that we do not have the data to plot a histogram, instead we are just given the mean, £50.85 million, and the standard deviation, £75.06 million.\nIf the sample SFA were normally distributed, we would expect approximately 95% of the values to lie within 2 standard deviations of the mean. That would mean 95% of the values lying between -£97.26 million and £198.97 million. The SFA for local authorities cannot be negative, therefore this range would contain a lot of impossible values. This shows that the mean and standard deviation are not appropriate summaries, and the sample is not normally distributed.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Summarising data</span>"
+    ]
+  },
+  {
+    "objectID": "03a_exercise3.html",
+    "href": "03a_exercise3.html",
+    "title": "Exercise 3: Summary statistics",
+    "section": "",
+    "text": "Question 1\nThe following line graphs are taken from the Criminal Courts statistics quarterly report, showing the average number of days from offense to completion for defendants at the Crown Court. Which graph is the most appropriate to display the average time and why?",
+    "crumbs": [
+      "Exercise 3: Summary statistics"
+    ]
+  },
+  {
+    "objectID": "03a_exercise3.html#question-1",
+    "href": "03a_exercise3.html#question-1",
+    "title": "Exercise 3: Summary statistics",
+    "section": "",
+    "text": "Average number of days from offence to completion for defendants dealt with at the Crown Court, Q1 2014 – Q4 2023",
+    "crumbs": [
+      "Exercise 3: Summary statistics"
+    ]
+  },
+  {
+    "objectID": "03a_exercise3.html#question-2",
+    "href": "03a_exercise3.html#question-2",
+    "title": "Exercise 3: Summary statistics",
+    "section": "Question 2",
+    "text": "Question 2\nThe mean and standard deviation of waiting times in weeks for hearings in the Crown Court between 2020 and 2023 are given in the table below. Using this information, what can you tell about the distribution of these times?\n\n\nYearMean waiting time (weeks)Standard deviation waiting time (weeks)2,02013.510.22,02119.115.62,02220.913.92,02322.814.7",
+    "crumbs": [
+      "Exercise 3: Summary statistics"
     ]
   },
   {
@@ -327,6 +427,137 @@
     "text": "5.8 The relationship between p-values and confidence intervals\nAs p-values and confidence intervals are based on the same information and theories, the results are linked. For example, if a p-value is less than 0.05, the sample estimate is further than 1.96 standard errors from the null hypothesis, meaning the null hypothesis will not lie in the 95% confidence interval. Conversely, if a p-value is higher than 0.05, the sample estimate is closer to the null hypothesis and the 95% confidence interval will contain the null hypothesis.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Inferential statistics</span>"
+    ]
+  },
+  {
+    "objectID": "05a_exercise4.html",
+    "href": "05a_exercise4.html",
+    "title": "Exercise 4: Inferential statistics",
+    "section": "",
+    "text": "Comment on the way in which these results have been presented. Are the results clear? What has been done well? Is there anything you think could be improved? Do the results shown appear to be valid (from the information we are given)?",
+    "crumbs": [
+      "Exercise 4: Inferential statistics"
+    ]
+  },
+  {
+    "objectID": "01b_exercise1_solutions.html",
+    "href": "01b_exercise1_solutions.html",
+    "title": "Appendix A — Exercise 1 solutions",
+    "section": "",
+    "text": "Question 1\nFor each of the following research questions, identify the Population, Intervention and Comparison (if applicable) and the Outcome.\nP: Staff working in government departments (these departments would be named in real life!)\nI: 4-day working week\nC: Regular working structure\nO: Productivity, e.g. deadlines met (this would need to be more well-defined, specific and measurable!)\nP: Defendants dealt with at magistrates’ courts in North West England\nI: N/A\nC: N/A\nO: Time between offence being committed and case completion\nP: Prisons in England and Wales\nI: Pre-pandemic\nC: Post-pandemic\nO: Population in prisons",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Exercise 1 solutions</span>"
+    ]
+  },
+  {
+    "objectID": "01b_exercise1_solutions.html#question-1",
+    "href": "01b_exercise1_solutions.html#question-1",
+    "title": "Appendix A — Exercise 1 solutions",
+    "section": "",
+    "text": "Does the introduction of a 4-day working week increase productivity in government departments?\n\n\n\n\n\n\nWhat is the average time between an offence being committed and case completion for defendants dealt with at magistrates’ courts in the North West of England?\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe outcome is the time between these points, not the average that is referenced in the question. Picture the dataset: the difference in time will be recorded for each defendant as a variable.\n\n\n\nHow has the prison population in England and Wales changed compared to pre-pandemic levels?\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThis question can be tricky as the outcome is actually a population. Again, it helps to picture the dataset we would use to answer this research question:\n\nEach row would be a prison in England or Wales\nThere would be a time period variable, where observations are either classified as pre- or post-pandemic\nThe outcome variable would be the prison population measured at each time point for each prison in England and Wales.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Exercise 1 solutions</span>"
+    ]
+  },
+  {
+    "objectID": "01b_exercise1_solutions.html#question-2",
+    "href": "01b_exercise1_solutions.html#question-2",
+    "title": "Appendix A — Exercise 1 solutions",
+    "section": "Question 2",
+    "text": "Question 2\nIf the practitioners were more likely to record information on simpler cases, as they had more time to do so, this would mean these are more likely to be observed than the more technical cases. The data will therefore not be random and will not be representative of these technical cases. This means that the results of the analysis would be biased.\nIf the practitioner had not recorded details because they were off work with the flu and had not had time to catch up on their work, this is not related to the data and the missing values are random. This would make our sample smaller than anticipated but still random and representative of the target population. Therefore, results from this analysis would be unbiased.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Exercise 1 solutions</span>"
+    ]
+  },
+  {
+    "objectID": "02b_exercise2_solutions.html",
+    "href": "02b_exercise2_solutions.html",
+    "title": "Appendix B — Exercise 2 solutions",
+    "section": "",
+    "text": "Question 1",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Exercise 2 solutions</span>"
+    ]
+  },
+  {
+    "objectID": "02b_exercise2_solutions.html#question-1",
+    "href": "02b_exercise2_solutions.html#question-1",
+    "title": "Appendix B — Exercise 2 solutions",
+    "section": "",
+    "text": "Prison populations, March 2003 to 2023\n\n\n\nDip in sentencing in 2020 during the pandemic, assuming due to court closures. Increasing up to 2023, almost returned to previous levels.\nNumber on remand has been increasing since around 2018/19. Look back into the data to try to understand the reasons for this. Is it possible that the steeper increase post-2020 is a result of an overloaded court system?\nHard to see differences in remand population as it is so small compared to the other lines, would it be better to show these as separate plots to better understand the changes over time?\nAnnotations to highlight the court closures and any changes in policy that could help explain patterns would be a helpful addition.\nText should be made larger to make the graph more accessible.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Exercise 2 solutions</span>"
+    ]
+  },
+  {
+    "objectID": "02b_exercise2_solutions.html#question-2",
+    "href": "02b_exercise2_solutions.html#question-2",
+    "title": "Appendix B — Exercise 2 solutions",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\nNumber of offenders under Probation Service supervision, 31 December 2013 to 2023\n\n\n\nClear annotation helps to explain the increase in supervisions following a policy change.\nThe differences in total supervisions makes it difficult to compare the number of types of supervisions over time. Has the number increased in every type following the introduction of the ORA or has this had more of an impact on post-release supervision?\nThese comparisons could be made clearer by adding labels with total to the bars or could be compared using a line graph with a line per supervision type (and possibly a total line).\nA proportion stacked bar chart may also be useful to compare whether the distribution across types has changed following the change in policy.\nText should be made larger to make the graph more accessible.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Exercise 2 solutions</span>"
+    ]
+  },
+  {
+    "objectID": "02b_exercise2_solutions.html#question-3",
+    "href": "02b_exercise2_solutions.html#question-3",
+    "title": "Appendix B — Exercise 2 solutions",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\nProportion of outstanding cases at the Crown Court by grouped age, Q1 2014 – Q4 2023\n\n\n\nThere is a clear trend over time, with the proportion of ‘older’ cases increasing following the closure of courts in 2020.\nAn annotation would help make this trend clearer and make the proportions easier to interpret. -The use of bars creates a Moire pattern, a visual trick that makes the bars look like they are moving. This is quite unpleasant for some readers (me included), making it hard to look at the plot too long and interpret it.\nConsider joining the bars into a stacked area plot to remove this unpleasant pattern.\nText needs to be larger to make the graph more accessible.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Exercise 2 solutions</span>"
+    ]
+  },
+  {
+    "objectID": "03b_exercise3_solutions.html",
+    "href": "03b_exercise3_solutions.html",
+    "title": "Appendix C — Exercise 3 solutions",
+    "section": "",
+    "text": "Question 1\nThe following line graphs are taken from the Criminal Courts statistics quarterly report, showing the average number of days from offense to completion for defendants at the Crown Court. Which graph is the most appropriate to display the average time and why?\nWhen displaying averages/measures of centre, we should only give one measure. If the data are normally distributed, the mean and median will be equal so there is no need to show both. If the data are not normal, the mean is not a valid measure and should not be shown anyway.\nThe median should be used as there is a substantial difference between these values, indicating that the data are not normally distributed.\nWhen displaying graphs for comparison, ensure that the axis scales are the same to avoid misleading readers who will assume a like-for-like comparison.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Exercise 3 solutions</span>"
+    ]
+  },
+  {
+    "objectID": "03b_exercise3_solutions.html#question-1",
+    "href": "03b_exercise3_solutions.html#question-1",
+    "title": "Appendix C — Exercise 3 solutions",
+    "section": "",
+    "text": "Average number of days from offence to completion for defendants dealt with at the Crown Court, Q1 2014 – Q4 2023",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Exercise 3 solutions</span>"
+    ]
+  },
+  {
+    "objectID": "03b_exercise3_solutions.html#question-2",
+    "href": "03b_exercise3_solutions.html#question-2",
+    "title": "Appendix C — Exercise 3 solutions",
+    "section": "Question 2",
+    "text": "Question 2\nThe mean and standard deviation of waiting times in weeks for hearings in the Crown Court between 2020 and 2023 are given in the table below. Using this information, what can you tell about the distribution of these times?\n\n\nYearMean waiting time (weeks)Standard deviation waiting time (weeks)2,02013.510.22,02119.115.62,02220.913.92,02322.814.7\n\n\nIf we use the formula to approximate the 95% sample range, all these give negative waiting times which are impossible. For example, in 2020 the 95% range of waiting times would be approximately \\(13.5 \\pm (10.2 \\times 2) = [-6.9, 33.9]\\) weeks. Therefore, the data are not normally distributed and the mean should not be given. The median and interquartile range would be more appropriate.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Exercise 3 solutions</span>"
+    ]
+  },
+  {
+    "objectID": "05b_exercise4_solutions.html",
+    "href": "05b_exercise4_solutions.html",
+    "title": "Appendix D — Exercise 4 solutions",
+    "section": "",
+    "text": "Comment on the way in which these results have been presented. Are the results clear? What has been done well? Is there anything you think could be improved? Do the results shown appear to be valid (from the information we are given)?\n\n\nTables not the most exciting method of visualisations but they do provide all information in a clear format\nNot clear what the interval labelled ‘estimated difference’ is showing. I assume it is the confidence interval but no indication about the confidence levels used.\nAll three tables have confidence intervals containing 0, or no difference. This shows each outcome is compatible with no difference between the intervention and control groups.\nThis agrees with the relatively large p-values indicating no statistically significant differences between the groups.\nExample of a confidence interval interpretation (from table 3): we are 95% confident that individuals that received support committed their first re-offence between 6 days earlier (-6) and 43 days later than the control group on average. The p-value shows that we would expect this big of a difference (or more extreme) about 14 in 100 times if there were no differences at the population level. The difference is not statistically significant.\n\n\n\nEffective visualisations, eye-catching and clear (especially the first two). Nice use of annotations to ensure the values are clear\nConfidence intervals should not be given for each group separately as they are not comparable. Confidence intervals should only be given for the parameter that we are trying to find at the population level. In this case, we are interested in the confidence interval of the differences. Comparing the separate confidence intervals is not valid.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Exercise 4 solutions</span>"
     ]
   }
 ]

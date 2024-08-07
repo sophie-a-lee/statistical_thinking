@@ -15,10 +15,19 @@ book:
   chapters:
     - index.qmd
     - 01_research_qs.qmd
+    - 01a_exercise1.qmd
     - 02_visualisation.qmd
+    - 02a_exercise2.qmd
     - 03_summarising.qmd
+    - 03a_exercise3.qmd
     - 04_comparisons.qmd
     - 05_inferences.qmd
+    - 05a_exercise4.qmd
+  appendices: 
+    - 01b_exercise1_solutions.qmd
+    - 02b_exercise2_solutions.qmd
+    - 03b_exercise3_solutions.qmd
+    - 05b_exercise4_solutions.qmd
     
 
 format:

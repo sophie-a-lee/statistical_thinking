@@ -1,0 +1,51 @@
+# Exercise 1 solutions
+
+## Question 1 {.unnumbered}
+For each of the following research questions, identify the Population, Intervention and Comparison (if applicable) and the Outcome. 
+
+a. Does the introduction of a 4-day working week increase productivity in government departments?
+
+**P:** Staff working in government departments (these departments would be named in real life!)
+
+**I:** 4-day working week
+
+**C:** Regular working structure
+
+**O:** Productivity, e.g. deadlines met (this would need to be more well-defined, specific and measurable!)
+
+b. What is the average time between an offence being committed and case completion for defendants dealt with at magistrates’ courts in the North West of England?
+
+**P:** Defendants dealt with at magistrates’ courts in North West England
+
+**I:** N/A
+
+**C:** N/A
+
+**O:** Time between offence being committed and case completion
+
+:::{.callout-note}
+The outcome is the time between these points, not the average that is referenced in the question. Picture the dataset: the difference in time will be recorded for each defendant as a variable. 
+:::
+
+c. How has the prison population in England and Wales changed compared to pre-pandemic levels?
+
+**P:** Prisons in England and Wales
+
+**I:** Pre-pandemic
+
+**C:** Post-pandemic
+
+**O:** Population in prisons
+
+:::{.callout-note}
+This question can be tricky as the outcome is actually a *population*. Again, it helps to picture the dataset we would use to answer this research question:
+
+- Each row would be a prison in England or Wales
+- There would be a time period variable, where observations are either classified as pre- or post-pandemic
+- The outcome variable would be the prison population measured at each time point for each prison in England and Wales.
+:::
+
+## Question 2 {.unnumbered}
+If the practitioners were more likely to record information on simpler cases, as they had more time to do so, this would mean these are **more likely to be observed than the more technical cases**. The data will therefore not be random and will not be representative of these technical cases. This means that the results of the analysis would be **biased**.
+
+If the practitioner had not recorded details because they were off work with the flu and had not had time to catch up on their work, this is **not related to the data** and the missing values are random. This would make our sample smaller than anticipated but still random and representative of the target population. Therefore, results from this analysis would be **unbiased**.

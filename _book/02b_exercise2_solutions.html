@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistical thinking - 4&nbsp; Making comparisons</title>
+<title>Statistical thinking - Appendix B — Exercise 2 solutions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./05_inferences.html" rel="next">
-<link href="./03a_exercise3.html" rel="prev">
+<link href="./03b_exercise3_solutions.html" rel="next">
+<link href="./01b_exercise1_solutions.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,40 +70,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
 
-<script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
-
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -116,7 +83,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_comparisons.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Making comparisons</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01b_exercise1_solutions.html">Appendices</a></li><li class="breadcrumb-item"><a href="./02b_exercise2_solutions.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exercise 2 solutions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -191,7 +158,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04_comparisons.html" class="sidebar-item-text sidebar-link active">
+  <a href="./04_comparisons.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Making comparisons</span></span></a>
   </div>
 </li>
@@ -209,13 +176,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01b_exercise1_solutions.html" class="sidebar-item-text sidebar-link">
@@ -224,7 +191,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02b_exercise2_solutions.html" class="sidebar-item-text sidebar-link">
+  <a href="./02b_exercise2_solutions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exercise 2 solutions</span></span></a>
   </div>
 </li>
@@ -252,19 +219,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#comparing-a-categorical-variable-between-groups" id="toc-comparing-a-categorical-variable-between-groups" class="nav-link active" data-scroll-target="#comparing-a-categorical-variable-between-groups"><span class="header-section-number">4.1</span> Comparing a categorical variable between groups</a></li>
-  <li><a href="#comparing-numeric-variable-between-two-groups" id="toc-comparing-numeric-variable-between-two-groups" class="nav-link" data-scroll-target="#comparing-numeric-variable-between-two-groups"><span class="header-section-number">4.2</span> Comparing numeric variable between two groups</a></li>
-  <li><a href="#comparing-variables-over-time" id="toc-comparing-variables-over-time" class="nav-link" data-scroll-target="#comparing-variables-over-time"><span class="header-section-number">4.3</span> Comparing variables over time</a></li>
-  <li><a href="#identifying-trends-between-two-numeric-variables" id="toc-identifying-trends-between-two-numeric-variables" class="nav-link" data-scroll-target="#identifying-trends-between-two-numeric-variables"><span class="header-section-number">4.4</span> Identifying trends between two numeric variables</a></li>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link active" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sophie-a-lee/statistical_thinking/edit/main/04_comparisons.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/sophie-a-lee/statistical_thinking/edit/main/02b_exercise2_solutions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01b_exercise1_solutions.html">Appendices</a></li><li class="breadcrumb-item"><a href="./02b_exercise2_solutions.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exercise 2 solutions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Making comparisons</span></h1>
+<h1 class="title">Appendix B — Exercise 2 solutions</h1>
 </div>
 
 
@@ -281,164 +247,53 @@ window.Quarto = {
 </header>
 
 
-<p>Often, our research question will involve a comparison between groups, investigating trends over time, or investigating a relationship between two numeric variables. There are multiple approaches we can use to compare groups but the correct choice will depend on the outcome of interest and the type of relationship we are interested in. This section will describe the most common comparative statistics, their interpretations, and the reasons we may choose to use one approach over another.</p>
-<section id="comparing-a-categorical-variable-between-groups" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="comparing-a-categorical-variable-between-groups"><span class="header-section-number">4.1</span> Comparing a categorical variable between groups</h2>
-<p>When comparing a categorical variable between groups, we are often comparing the summary measures that were introduced in the previous section: proportions, percentages, and rates. These summaries are either compared using the absolute difference or the relative difference.</p>
-<p>To demonstrate the difference between these comparisons, let’s consider the number of recorded crimes in the East Midlands we saw earlier and compare them to the number recorded in the West Midlands. These crimes are categorised as either violent or non-violent. We wish to compare the distribution of these types of crimes between the regions, i.e.&nbsp;was the proportion of recorded crimes that were violent similar between regions. The table below shows the number and type of crime, along with the percentage of total crimes in each region that were classified as either violent or non-violent:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="tabwid"><style>.cl-1a7cc8a8{}.cl-1a6f95b6{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-1a6f95f2{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-1a75f438{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-1a75f442{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-1a76156c{width:1.287in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1a761576{width:1.44in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1a761580{width:1.457in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1a761581{width:1.499in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1a76158a{width:1.287in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1a76158b{width:1.44in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1a761594{width:1.457in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1a761595{width:1.499in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1a761596{width:1.287in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1a76159e{width:1.44in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1a76159f{width:1.457in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1a7615a0{width:1.499in;background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-1a7cc8a8"><thead><tr style="overflow-wrap:break-word;"><th class="cl-1a76156c"><p class="cl-1a75f438"><span class="cl-1a6f95b6">Area</span></p></th><th class="cl-1a761576"><p class="cl-1a75f442"><span class="cl-1a6f95b6">Recorded crimes</span></p></th><th class="cl-1a761580"><p class="cl-1a75f438"><span class="cl-1a6f95b6">Violent crime</span></p></th><th class="cl-1a761581"><p class="cl-1a75f438"><span class="cl-1a6f95b6">Nonviolent crimes</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-1a76158a"><p class="cl-1a75f438"><span class="cl-1a6f95f2">East Midlands</span></p></td><td class="cl-1a76158b"><p class="cl-1a75f442"><span class="cl-1a6f95f2">419,236</span></p></td><td class="cl-1a761594"><p class="cl-1a75f438"><span class="cl-1a6f95f2">161865 (38.61%)</span></p></td><td class="cl-1a761595"><p class="cl-1a75f438"><span class="cl-1a6f95f2">257371 (61.39%)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1a761596"><p class="cl-1a75f438"><span class="cl-1a6f95f2">West Midlands</span></p></td><td class="cl-1a76159e"><p class="cl-1a75f442"><span class="cl-1a6f95f2">572,937</span></p></td><td class="cl-1a76159f"><p class="cl-1a75f438"><span class="cl-1a6f95f2">233851 (40.82%)</span></p></td><td class="cl-1a7615a0"><p class="cl-1a75f438"><span class="cl-1a6f95f2">339086 (59.18%)</span></p></td></tr></tbody></table></div>
-</div>
-</div>
-<p>The absolute difference is calculated by simply subtracting proportions or percentages between groups. In this example, the absolute difference in proportions of total crimes that were violent is (0.408 - 0.386) 0.22, and the absolute difference in percentages is (40.8% - 38.6%) 2.2%. The West Midlands had 2.2% higher percentage points of recorded violent crimes than the East Midlands. If we carried out the sums the other way round, we would get a negative number (-2.2%), indicating a reduction in the percentage points in East Midlands compared to the West. Absolute differences are interpreted relative to a null value of 0, representing no difference.</p>
-<p>Alternatively, the relative difference is found by dividing one value by another. Unlike the absolute difference, this will be the same whether we use the proportion or percentage. The relative difference in the percentage of violent crimes between regions is (40.8% / 38.6%) 1.057. This means that the percentage of crimes recorded as violent was 1.057 times higher in the West Midlands compared to the East Midlands. If we wanted to do this comparison the other way around (comparing the East to West Midlands), we would find a relative difference of (38.6% / 40.8%) 0.946. Therefore, the percentage of recorded crimes in the East Midlands that were violent was 0.946 times the percentage in the West Midlands. When interpreting relative differences, we are comparing the result to a null value of 1, given when both values are equal. As 0.946 is below 1, this represents a reduction.</p>
-</section>
-<section id="comparing-numeric-variable-between-two-groups" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="comparing-numeric-variable-between-two-groups"><span class="header-section-number">4.2</span> Comparing numeric variable between two groups</h2>
-<p>The most appropriate method to compare a numeric variable between groups will once again depend on the distribution of the variable. A comparison can either be made using the difference in means, where both groups have a normally distributed sample, or difference in medians, where one or both of the samples are skewed.</p>
-<p>Earlier in the course, we saw the settlement funding assessment (SFA) for each local authority in England in 2015. We may want to compare this between two regions, for example between the North West and the Yorkshire and Humber regions. Before choosing the most appropriate comparison, we must check the distribution of SFA in each region using a histogram:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
+<p>Interpret the graphs, note any trends, any surprising results, and anything you would check in the data if this was your work. Make a note of things the visualisation did well and ways in which it could be improved.</p>
+<section id="question-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="question-1">Question 1</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04_comparisons_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="Images/prison_population.png" class="img-fluid figure-img"></p>
+<figcaption>Prison populations, March 2003 to 2023</figcaption>
 </figure>
 </div>
-</div>
-</div>
-<p>As with the full sample, both regions’ values are positively skewed (with a longer upper tail). This means that a comparison of means would be inappropriate and we must use the difference in medians. The median of the North West was £57.15 million, the median in Yorkshire and the Humber was £58.49 million. This makes the median difference £1.34 million (or -£1.34 million depending on which difference we are finding). Therefore, the SFA was £1.34 million higher on average in the Yorkshire and Humber region than in the North West in 2015.</p>
+<ul>
+<li>Dip in sentencing in 2020 during the pandemic, assuming due to court closures. Increasing up to 2023, almost returned to previous levels.</li>
+<li>Number on remand has been increasing since around 2018/19. Look back into the data to try to understand the reasons for this. Is it possible that the steeper increase post-2020 is a result of an overloaded court system?</li>
+<li>Hard to see differences in remand population as it is so small compared to the other lines, would it be better to show these as separate plots to better understand the changes over time?</li>
+<li>Annotations to highlight the court closures and any changes in policy that could help explain patterns would be a helpful addition.</li>
+<li>Text should be made larger to make the graph more accessible.</li>
+</ul>
 </section>
-<section id="comparing-variables-over-time" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="comparing-variables-over-time"><span class="header-section-number">4.3</span> Comparing variables over time</h2>
-<p>When dealing with temporal data, it is important to quantify differences across time as well as visualising them using a line graph. Comparison across time is typically given as an absolute difference between time points, as a relative difference, or this is commonly converted into a percentage change.</p>
-<p>Recall the line graph given in an earlier section showing the reduction in the number of violent crimes recorded between 2010 and 2020:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
+<section id="question-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="question-2">Question 2</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04_comparisons_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="Images/probation_supervision.png" class="img-fluid figure-img"></p>
+<figcaption>Number of offenders under Probation Service supervision, 31 December 2013 to 2023</figcaption>
 </figure>
 </div>
-</div>
-</div>
-<p>This difference can be quantified by comparing the number of violent crimes recorded in 2010 and 2020. The absolute difference is found by subtracting the number of violent crimes recorded in 2020, 1,239,000, by the number in 2010, 1,841,000. There were 602,000 less violent crimes reported in 2020 compared to 2010.</p>
-<p>The relative difference is found by dividing one count by the other. In this example, the relative difference (<span class="math inline">\(1,841,000 \div 1,239,000\)</span>) is 1.486. This means that there were 1.486 times more violent crimes reported in 2020 compared to 2010. The percentage change can be found by comparing the relative difference to the null value of 1 (no relative difference). When comparing 2010 to 2020, the relative difference was 0.486 above 1, giving the proportion increase. This can be multiplied by 100 to give a percentage increase of 48.6%. Therefore, there were 48.6% more violent crimes reported in 2010 compared to 2020.</p>
-<p>The relative difference can also be found by comparing 2020 to 2010 if we want to give the relative or percentage decrease in violent crime. The relative difference (<span class="math inline">\(1,239,000 \div 1,841,000\)</span>) is 0.673, so there were 0.673 times the number of crimes reported in 2020 than 2010. This result is not intuitive, so converting the difference into a percentage decrease can make the value easier to interpret. As with an increase, we first find the difference between the relative difference and the null (1 - 0.673). This gives a proportion decrease of 0.327 or a percentage decrease of 32.7%. Therefore, there were 32.7% fewer violent crimes reported in 2020 compared to 2010.</p>
+<ul>
+<li>Clear annotation helps to explain the increase in supervisions following a policy change.</li>
+<li>The differences in total supervisions makes it difficult to compare the number of types of supervisions over time. Has the number increased in every type following the introduction of the ORA or has this had more of an impact on post-release supervision?</li>
+<li>These comparisons could be made clearer by adding labels with total to the bars or could be compared using a line graph with a line per supervision type (and possibly a total line).</li>
+<li>A proportion stacked bar chart may also be useful to compare whether the distribution across types has changed following the change in policy.</li>
+<li>Text should be made larger to make the graph more accessible.</li>
+</ul>
 </section>
-<section id="identifying-trends-between-two-numeric-variables" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="identifying-trends-between-two-numeric-variables"><span class="header-section-number">4.4</span> Identifying trends between two numeric variables</h2>
-<p>Correlation coefficients are summary statistics that describe the strength and direction of a relationship between two numeric variables. There are different types of correlation coefficients that exist, the choice of which depends on the nature of the trend it is measuring: is it linear or nonlinear?</p>
-<p>The <strong>Pearson’s correlation coefficient</strong> measures the association between numeric variables if we assume it is linear. It essentially measures how close points lie to the line of best fit added to a scatterplot. The alternative to Pearson’s correlation is <strong>Spearman’s correlation coefficient</strong>, this measures the general trend upwards or downwards, whether or not this is linear. As with medians and IQRs, Spearman’s correlation coefficient uses less of the data than Pearson’s so we only use it where necessary.</p>
-<p>Correlation coefficients take a value between -1 and 1. A value of 0 represents no association, values of +/- 1 represent perfect association (a straight or curved line depending on the choice of statistic). Generally, a correlation coefficient will lie between 0 and +/- 1 where the further the value gets from 0, the stronger the relationship is.</p>
-<p>A correlation coefficient is said to show a <strong>positive association</strong> if the value is above 0. This means as one variable increases, the other also tends to increase:</p>
-<div id="fig-positive-correlation" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-positive-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positive-correlation" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-positive-correlation-1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-positive-correlation-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04_comparisons_files/figure-html/fig-positive-correlation-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-ref-parent="fig-positive-correlation" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-positive-correlation-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Correlation = 1
-</figcaption>
+<section id="question-3" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="question-3">Question 3</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Images/outstanding_cases_cc.png" class="img-fluid figure-img"></p>
+<figcaption>Proportion of outstanding cases at the Crown Court by grouped age, Q1 2014 – Q4 2023</figcaption>
 </figure>
 </div>
-</div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positive-correlation" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-positive-correlation-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-positive-correlation-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04_comparisons_files/figure-html/fig-positive-correlation-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-ref-parent="fig-positive-correlation" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-positive-correlation-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) 0 &lt; correlation &lt; 1
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-positive-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: Positive Pearson correlation
-</figcaption>
-</figure>
-</div>
-<p>A correlation shows <strong>negative association</strong> if the value is below 0. This means as one variable increases, the other tends to decrease:</p>
-<div id="fig-negative-correlation" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-negative-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-negative-correlation" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-negative-correlation-1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-negative-correlation-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04_comparisons_files/figure-html/fig-negative-correlation-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-ref-parent="fig-negative-correlation" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-negative-correlation-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Correlation = -1
-</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-negative-correlation" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-negative-correlation-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-negative-correlation-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04_comparisons_files/figure-html/fig-negative-correlation-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-ref-parent="fig-negative-correlation" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-negative-correlation-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) -1 &lt; correlation &lt; 0
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-negative-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.2: Negative Pearson correlation
-</figcaption>
-</figure>
-</div>
-<p>A correlation coefficient close to 0 represents little or <strong>no association</strong>. However, it could also be an indication that the relationship is nonlinear and the Pearson coefficient is inappropriate. In this case, the Spearman coefficient may be more appropriate:</p>
-<div id="fig-no-correlation" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-no-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-no-correlation" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-no-correlation-1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-no-correlation-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04_comparisons_files/figure-html/fig-no-correlation-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-ref-parent="fig-no-correlation" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-no-correlation-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Correlation = 0 (no correlation).
-</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-no-correlation" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-no-correlation-2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-no-correlation-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04_comparisons_files/figure-html/fig-no-correlation-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-ref-parent="fig-no-correlation" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-no-correlation-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Spearman correlation should be considered to quantify a non-linear trend.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-no-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.3: Circumstances where Pearson correlation is not appropriate.
-</figcaption>
-</figure>
-</div>
+<ul>
+<li>There is a clear trend over time, with the proportion of ‘older’ cases increasing following the closure of courts in 2020.</li>
+<li>An annotation would help make this trend clearer and make the proportions easier to interpret. -The use of bars creates a <a href="https://en.wikipedia.org/wiki/Moir%C3%A9_pattern">Moire pattern</a>, a visual trick that makes the bars look like they are moving. This is quite unpleasant for some readers (me included), making it hard to look at the plot too long and interpret it.</li>
+<li>Consider joining the bars into a stacked area plot to remove this unpleasant pattern.</li>
+<li>Text needs to be larger to make the graph more accessible.</li>
+</ul>
 
 
 </section>
@@ -999,13 +854,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03a_exercise3.html" class="pagination-link" aria-label="Exercise 3: Summary statistics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 3: Summary statistics</span>
+      <a href="./01b_exercise1_solutions.html" class="pagination-link" aria-label="Exercise 1 solutions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Exercise 1 solutions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05_inferences.html" class="pagination-link" aria-label="Inferential statistics">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Inferential statistics</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03b_exercise3_solutions.html" class="pagination-link" aria-label="Exercise 3 solutions">
+        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Exercise 3 solutions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1014,4 +869,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sophie-a-lee/statistical_thinking/edit/main/04_comparisons.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sophie-a-lee/statistical_thinking/edit/main/02b_exercise2_solutions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

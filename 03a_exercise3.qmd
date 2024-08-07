@@ -1,0 +1,32 @@
+```{r}
+#| label: load-packages
+#| include: false
+
+pacman::p_load(tidyverse, flextable)
+```
+
+# Exercise 3: Summary statistics {.unnumbered}
+
+## Question 1 {.unnumbered}
+The following line graphs are taken from the Criminal Courts statistics quarterly report, showing the average number of days from offense to completion for defendants at the Crown Court. Which graph is the most appropriate to display the average time and why?
+
+![Average number of days from offence to completion for defendants dealt with at the Crown Court, Q1 2014 – Q4 2023](Images/days_completion_cc.png)
+
+## Question 2 {.unnumbered}
+
+The mean and standard deviation of waiting times in weeks for hearings in the Crown Court between 2020 and 2023 are given in the table below. Using this information, what can you tell about the distribution of these times? 
+
+```{r}
+#| echo: false
+
+tibble(year = 2020:2023,
+       mean_wait = c(13.5, 19.1, 20.9, 22.8),
+       sd_wait = c(10.2, 15.6, 13.9, 14.7)) %>% 
+  flextable() %>% 
+  set_header_labels(year = "Year",
+                    mean_wait = "Mean waiting time (weeks)",
+                    sd_wait = "Standard deviation waiting time (weeks)") %>% 
+  autofit() %>% 
+  bold(part = "header") %>% 
+  bg(part = "all", bg = "grey95")
+```

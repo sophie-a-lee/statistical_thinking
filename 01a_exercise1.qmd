@@ -1,0 +1,23 @@
+# Exercise 1: research questions and missing data {.unnumbered}
+
+## Question 1 {.unnumbered}
+
+For each of the following research questions, identify the **P**opulation, **I**ntervention and **C**omparison (if applicable) and the **O**utcome.
+
+a. Does the introduction of a 4-day working week increase productivity in government departments?
+b. What is the average time between an offence being committed and case completion for defendants dealt with at magistrates’ courts in the North West of England?
+c. How has the prison population in England and Wales changed compared to pre-pandemic levels?
+
+:::{.callout-tip}
+When breaking down a research question into PICO, it can help to picture the data set we would need to answer it. 
+
+The rows/observations will represent our *target population*.
+
+The outcome will be the variable that we are measuring on this target population (not the average or difference that we will use this variable to calculate).
+
+If there are comparison groups in the research questions, these would be included in the data as a categorical variable. 
+:::
+
+## Question 2 {.unnumbered}
+
+Probation practitioners were asked to record details in an administrative system for analytical purposes not directly related to their work. Some practitioners were busy and forgot to record the data on the system, leading to holes in the data. Give a scenario where this would introduce bias into the analysis, and another where this would not cause bias.
